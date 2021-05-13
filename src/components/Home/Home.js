@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
-import Header from '../Header/Header'
+
 import News from './News'
 import newsOne from '../assets/photo/newsOne.jpg'
 import newsTwo from '../assets/photo/newsTwo.jpg'
 import newsThree from '../assets/photo/newsThree.jpg'
 import newsFour from '../assets/photo/newsFour.jpg'
 import Try from '../../Try'
+import NewHead from '../Header/NewHead'
 
 export default class Home extends Component {
 
-    render() {
+    render() { console.log("loca " + localStorage.getItem("jwtToken"))
         return (
-            <div>
-                <Header />
+            <body>
+                <NewHead />
                 <div className="container">
                     <News photoL={newsOne} side="l"
                         titleL={" Programs for Student Groups Led by a Library Facilitator"}
@@ -31,7 +32,7 @@ export default class Home extends Component {
                     <News photo={newsThree} side="l" title={"Explore the Work of Women Photojournalists"} subtitle={"RESEARCH"} />
                     <News photo={newsFour} side="r" title={"View a Calendar of Upcoming Virtual Programs from the Library"} subtitle={"EVENTS"} /> */}
                 </div>
-            </div>
+            </body>
         )
     }
 }

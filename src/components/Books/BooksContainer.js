@@ -4,6 +4,7 @@ import Books from './Books';
 import BooksService from './BooksService';
 import Header from '..//Header/Header'
 import Paginationn from '../commonComponents/Pagination';
+import NewHead from '../Header/NewHead';
 
 function BooksContainer() {
     const history = useHistory();
@@ -28,7 +29,7 @@ function BooksContainer() {
     const url = `${window.location.pathname}`
     return (
         <div>
-            <Header />
+            <NewHead />
             <Books listOfBooks={books}/>
             <Paginationn numberOfPages={numberOfPages}  url="books"/>
         </div>

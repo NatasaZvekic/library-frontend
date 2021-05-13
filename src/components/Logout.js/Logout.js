@@ -19,6 +19,8 @@ export default class Logout extends Component {
         this.setState({ loggedOut: true })
     }
     render() {
+        localStorage.removeItem("jwtToken");
+        localStorage.removeItem("role")
         if (this.state.loggedOut === true) {
             return <Redirect to="/home" />
         }

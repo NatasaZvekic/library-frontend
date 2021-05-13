@@ -23,29 +23,37 @@ const FormSignUp = (props) => {
             [name]: value
         })
     }
-    const handleSubmit = e => {
+    
+    const fetchUserEmail = async () => {
+        const response = await props.login(values.email, values.password)
+        console.log("res " + localStorage.getItem("jwtToken"))
+        if (response !== null) {
+            history.push("/home")
+        }
+        else {
+            console.log("open")
+            setOpened(true);
+            setTimeout(function () {
+
+               setOpened(false)
+
+            }, 5000);
+
+        }
+      };
+
+     const handleSubmit = e => {
         e.preventDefault();
         if (values.password === "" || values.email === "") {
             console.log("erros")
             setErrors(validate(values))
         }
         else {
+            fetchUserEmail()
             setErrors("")
-            props.login(values.email, values.password)
-            console.log("token " + localStorage.getItem("jwtToken"))
-            if (localStorage.getItem("jwtToken") !== null) {
-                history.push("/home")
-            }
-            else {
-                console.log("open")
-                setOpened(true);
-                setTimeout(function () {
-
-                   setOpened(false)
-
-                }, 5000);
-
-            }
+            // props.login(values.email, values.password).then(()=>{console.log("sm")})
+            // console.log("token " + localStorage.getItem("jwtToken"))
+           
         }
     }
 
