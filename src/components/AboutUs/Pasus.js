@@ -9,7 +9,7 @@ const TryHelper = (props) => {
 
     const transation = useTransition(true, {
         from: { x: 900, y: 0, opacity: 0 },
-        enter: { x: 10, y: 0, opacity: 1 } 
+        enter: { x: 10, y: 0, opacity: 1 }
     })
 
     return (

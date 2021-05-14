@@ -7,8 +7,23 @@ import Logout from './components/Logout.js/Logout';
 import Try from './Try';
 import BooksContainer from './components/Books/BooksContainer';
 import LoginContainer from './components/LogIn/LoginContainer';
+import GenresContainer from './components/Genres/GenresContainer'
+import jwtDecode from 'jwt-decode';
 
 function App() {
+  // let token = localStorage.getItem("jwtToken");
+  // let decodedToken = jwtDecode(token);
+  // console.log("Decoded Token", decodedToken);
+  // let currentDate = new Date();
+
+  // // JWT exp is in seconds
+  // if (decodedToken.exp * 1000 < currentDate.getTime()) {
+  //   console.log("Token expired.");
+  // } else {
+  //   console.log("Valid token");   
+   
+  // }
+
   return (
     <Router>
       <Switch>
@@ -19,8 +34,10 @@ function App() {
         <Route path="/login" exact component={LoginContainer} />
         <Route path="/logout" exact component={Logout} />
         <Route path="/books" exact component={BooksContainer} />
-        <Route path="/books?pageNum=1" exact component={BooksContainer}/>
+        <Route path="/books?pageNum=1" exact component={BooksContainer} />
         <Route path="/try" exact component={Try} />
+        <Route path="/genres" exact component={GenresContainer} />
+
 
       </Switch>
     </Router>
