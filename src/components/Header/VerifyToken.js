@@ -1,0 +1,11 @@
+import axios from 'axios'
+
+const VerifyToken = {
+
+    verifyToken(){
+        return axios.get("https://localhost:44324/verifyToken",
+        { headers: { "token": localStorage.getItem("jwtToken") } })
+    
+    }
+}
+export default VerifyToken

@@ -5,7 +5,7 @@ import GenreList from './GenreList'
 import NewHead from '../Header/NewHead'
 import car from '../assets/photo/library1.jpg'
 
-function BooksContainer() {
+function GenresContainer() {
     const [genres, setGenres] = useState([]);
 
     useEffect(() => {
@@ -32,4 +32,4 @@ function BooksContainer() {
     )
 }
 
-export default BooksContainer;
+export default GenresContainer;
