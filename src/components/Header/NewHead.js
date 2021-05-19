@@ -41,6 +41,7 @@ export default class NewHeader extends Component {
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/authors" className="nav-links1">Authors</NavLink> : ''}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/deliverers" className="nav-links1">Deliverers</NavLink> : ''}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/rentals" className="nav-links1">Rentals</NavLink> : ''}
+                    {localStorage.getItem("role") === "admin" ? <NavLink to="/users" className="nav-links1">Users</NavLink> : ''}
                     {<NavLink to={localStorage.getItem("jwtToken") !== null ? "logout" : "/login"} className="nav-links1r">{localStorage.getItem("jwtToken") !== null ? "Log out" : "Log in"}</NavLink>}
 
                 </div>

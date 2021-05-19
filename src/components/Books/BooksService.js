@@ -1,8 +1,9 @@
 import axios from 'axios'
 const BooksService = {
 
-    GetAllBooks: (pageN) => { 
-        return axios.get(`https://localhost:44324/books?pageNumber=${pageN === null ? 1 : pageN}`)
+    GetAllBooks: (pageN, bookName) => { 
+        console.log("ag " + `https://localhost:44324/books?pageNumber=${pageN === null ? 1 : pageN}&bookName !== null ? ${bookName} : ''`)
+        return axios.get(`https://localhost:44324/books?bookName=${bookName === null ? '' : bookName}&pageNumber=${pageN === null ? 1 : pageN}`)
     },
 
     AddNewBook: ()=>{

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import DeleteDialog from './DeleteDialog';
 import InsertDialog from './InsertDialog';
+import SupplierTable from './SupplierTable';
 import UpdateDialog from './UpdateDialog';
-import GenreTable from './GenreTable';
 
-export default class GenreList extends Component {
+
+export default class SupplierList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,22 +13,26 @@ export default class GenreList extends Component {
             showUpdateDialog: false,
             showAddDialog: false,
             id: 0,
-            genreName: ''
+            name: '',
+            contact: 0,
+            address:''
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
-        this.deleteGenre = this.deleteGenre.bind(this)
+        this.deleteSupplier = this.deleteSupplier.bind(this)
         this.closeUpdateDialog = this.closeUpdateDialog.bind(this)
         this.closeAddDialog = this.closeAddDialog.bind(this)
         this.openAddDialog = this.openAddDialog.bind(this)
     }
 
-    openDialogForDelete = (genreID) => {
+    openDialogForDelete = (supplierID) => {
         this.setState({ showDeleteDialog: true })
-        this.setState({ id: genreID })
+        this.setState({ id: supplierID })
     }
-    openDialogForUpdate = (genre) => {
-        this.setState({ genreName: genre.genreName })
-        this.setState({ id: genre.genreID })
+    openDialogForUpdate = (supplier) => {
+        this.setState({ name: supplier.companyName })
+        this.setState({ contact: supplier.supplierContant })
+        this.setState({ address: supplier.supplierAddress })
+        this.setState({ id: supplier.supplierID })
         this.setState({ showUpdateDialog: true })
     }
     openAddDialog() {
@@ -43,17 +48,18 @@ export default class GenreList extends Component {
     closeAddDialog() {
         this.setState({ showAddDialog: false })
     }
-    deleteGenre() {
-        this.props.deleteGenre(this.state.id)
+    deleteSupplier() {
+        this.props.deleteSupplier(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
-    updateGenre = (genreName) => {
-        this.props.updateGenre(genreName, this.state.id)
+    updateSupplier = ( name, contact,address) => { console.log( this.state.id + " " + name + " "  + contact + " " + address)
+        this.props.updateSupplier(this.state.id, name, contact,address)
         this.setState({ showUpdateDialog: false })
-        this.setState({ genreName: '' })
+        this.clearAllFileds()
     }
-    insertGenre = (genreName1) => {
-        this.props.insertGenre(genreName1)
+    
+    insertSupplier = (name, contact, address) => {
+        this.props.insertSupplier(name, contact,address)
         this.setState({ showAddDialog: false })
         this.setState({ genreName: '' })
     }
@@ -61,28 +67,37 @@ export default class GenreList extends Component {
         this.setState({ genreName: e.target.value })
     }
 
+    clearAllFileds(){
+        this.setState({name: ''})
+        this.setState({contact : 0})
+        this.setState({address : ''})
+    }
     render() {
         return (
             <div>
-                <GenreTable
+                <SupplierTable
                     openDialogForDelete={this.openDialogForDelete}
                     openDialogForUpdate={this.openDialogForUpdate}
                     openAddDialog={this.openAddDialog}
-                    genreList={this.props.genreList} />
-                <InsertDialog
-                    insertGenre={this.insertGenre}
-                    genreName={this.state.genreName}
+                    supplierList={this.props.supplierList} />
+
+                 <InsertDialog
+                    insertSupplier={this.insertSupplier}
                     showAddDialog={this.state.showAddDialog}
                     closeAddDialog={this.closeAddDialog} />
-                <UpdateDialog
-                    updateGenre={this.updateGenre}
-                    genreName={this.state.genreName}
+
+                 <UpdateDialog
+                    updateSupplier={this.updateSupplier}
+                    name={this.state.name}
+                    contact={this.state.contact}
+                    address={this.state.address}
                     showUpdateDialog={this.state.showUpdateDialog}
                     closeUpdateDialog={this.closeUpdateDialog} />
-                <DeleteDialog
-                    deleteGenre={this.deleteGenre}
+
+                 <DeleteDialog
+                    deleteSupplier={this.deleteSupplier}
                     closeDeleteDialog={this.closeDeleteDialog}
-                    showDeleteDialog={this.state.showDeleteDialog} />
+                    showDeleteDialog={this.state.showDeleteDialog} /> 
             </div>
         )
     }

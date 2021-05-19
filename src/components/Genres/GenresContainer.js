@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useLocation } from 'react-router';
 import GenreService from './GenreService'
 import GenreList from './GenreList'
 import NewHead from '../Header/NewHead'
-import car from '../assets/photo/library1.jpg'
 
 function GenresContainer() {
     const [genres, setGenres] = useState([]);
@@ -11,6 +9,7 @@ function GenresContainer() {
     useEffect(() => {
         GenreService.getAllGenres().then((data) => {
             setGenres(data.data);
+            console.log("g " + data.data.genreName)
         })
     })
 

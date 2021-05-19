@@ -17,12 +17,12 @@ function EmployeeContainer(){
         EmployeeService.deleteEmployee(id)
     }
 
-    const updateDeliverer = (password,id, name, lastname, role, email, contact, ssn) =>{
-        EmployeeService.updateDeliverer(password,id, name, lastname, role, email, contact, ssn)
+    const updateEmployee = (id, name, lastname, role, email, ssn, contact) =>{
+        EmployeeService.updateEmployee(id, name, lastname, role, email, ssn, contact)
     }
 
-    const insertEmployee = (password, name, lastname, role, email, contact, ssn) => {
-        EmployeeService.insertEmployee(password, name, lastname, role, email, contact, ssn)
+    const insertEmployee = (name, lastname, role, email, password, contact, ssn) => {
+        EmployeeService.insertEmployee(name, lastname, role, email, password, contact, ssn)
     }
     return (
         <div> 
@@ -30,7 +30,7 @@ function EmployeeContainer(){
             <EmployeeList
             employeesList={employees}
             deleteEmployee={deleteEmployee}
-            updateDeliverer={updateDeliverer}
+            updateEmployee={updateEmployee}
             insertEmployee={insertEmployee}
             />
         </div>

@@ -12,13 +12,12 @@ const EmployeeService ={
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
-    updateDeliverer: (password,id, name, lastname, role, email, contact, ssn) => { console.log("role " + role + " " + lastname + " " )
+    updateEmployee: (id, name, lastname, role, email, ssn, contact) => { console.log("role " + role + " " + lastname + " " )
         const newEmployee = {
             employeeName : name,
             employeeLastName : lastname,
             employeeContact : contact,
             ssn : ssn,
-            password: password,
             email : email,
             role : role
         }
@@ -36,7 +35,7 @@ const EmployeeService ={
             });
             
     },
-    insertEmployee: ( password, name, lastname, role, email, contact, ssn) => { console.log("password " + password + " name: " + name + " last " + lastname + " role:" + role + " email" + email + " ssn: " + ssn + " contect:" + contact)
+    insertEmployee: ( name, lastname, role, email, password, contact, ssn) => { console.log("password " + password + " name: " + name + " last " + lastname + " role:" + role + " email" + email + " ssn: " + ssn + " contect:" + contact)
         const newEmployee = {
             employeeName : name,
             employeeLastName : lastname,

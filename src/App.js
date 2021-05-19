@@ -12,6 +12,8 @@ import jwtDecode from 'jwt-decode';
 import AuthorContainer from './components/Authors/AuthorContainer';
 import DelivererContainer from './components/Deliverers/DelivererContainer';
 import EmployeeContainer from './components/Employees/EmployeeContainer';
+import SupplierContainer from './components/Suppliers/SupplierContainer';
+import UserContainer from './components/User/UserContainer';
 
 function App() {
   
@@ -28,10 +30,12 @@ function App() {
         <Route path="/books" exact component={BooksContainer} />
         <Route path="/authors" exact component={AuthorContainer} />
         <Route path="/deliverers" exact component={DelivererContainer} />
-        <Route path="/books?pageNum=1" exact component={BooksContainer} />
+        <Route path="/books?pageNum?bookName" exact component={BooksContainer} />
         <Route path="/try" exact component={Try} />
         <Route path="/genres" exact component={GenresContainer} />
         <Route path="/employees" exact component={EmployeeContainer} />
+        <Route path="/users" exact component={UserContainer} />
+        <Route path="/suppliers" exact component={SupplierContainer} />
       </Switch>
     </Router>
   );

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import DeleteDialog from './DeleteDialog';
 import InsertDialog from './InsertDialog';
 import UpdateDialog from './UpdateDialog';
-import GenreTable from './GenreTable';
+import UserTable from './UserTable';
 
-export default class GenreList extends Component {
+export default class UserList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,22 +12,33 @@ export default class GenreList extends Component {
             showUpdateDialog: false,
             showAddDialog: false,
             id: 0,
-            genreName: ''
+            name: '',
+            lastname: '',
+            contact: 0,
+            address: '',
+            role: '',
+            email: '',
+            password: ' '
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
-        this.deleteGenre = this.deleteGenre.bind(this)
+        this.deleteUser = this.deleteUser.bind(this)
         this.closeUpdateDialog = this.closeUpdateDialog.bind(this)
         this.closeAddDialog = this.closeAddDialog.bind(this)
         this.openAddDialog = this.openAddDialog.bind(this)
     }
 
-    openDialogForDelete = (genreID) => {
+    openDialogForDelete = (id) => {
         this.setState({ showDeleteDialog: true })
-        this.setState({ id: genreID })
+        this.setState({ id: id })
     }
-    openDialogForUpdate = (genre) => {
-        this.setState({ genreName: genre.genreName })
-        this.setState({ id: genre.genreID })
+    openDialogForUpdate = (user) => {
+        this.setState({ id: user.userID })
+        this.setState({ name: user.userName })
+        this.setState({ lastname: user.userLastName })
+        this.setState({ role: user.role })
+        this.setState({ email: user.email })
+        this.setState({ address: user.userAddress })
+        this.setState({ contact: user.userContact })
         this.setState({ showUpdateDialog: true })
     }
     openAddDialog() {
@@ -43,46 +54,48 @@ export default class GenreList extends Component {
     closeAddDialog() {
         this.setState({ showAddDialog: false })
     }
-    deleteGenre() {
-        this.props.deleteGenre(this.state.id)
+    deleteUser() {
+        this.props.deleteUser(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
-    updateGenre = (genreName) => {
-        this.props.updateGenre(genreName, this.state.id)
+    updateUser = (name, lastname, contact, address, email, role) => { console.log("role " + role)
+        this.props.updateUser(this.state.id, name, lastname, contact, address, email, role)
         this.setState({ showUpdateDialog: false })
-        this.setState({ genreName: '' })
     }
-    insertGenre = (genreName1) => {
-        this.props.insertGenre(genreName1)
+    insertUser = (name, lastname, contact, address, email, role, password) => {
+        this.props.insertUser(name, lastname, contact, address, email, role, password)
         this.setState({ showAddDialog: false })
-        this.setState({ genreName: '' })
     }
-    onChange(e) {
-        this.setState({ genreName: e.target.value })
-    }
-
+    
     render() {
         return (
             <div>
-                <GenreTable
+                <UserTable
                     openDialogForDelete={this.openDialogForDelete}
                     openDialogForUpdate={this.openDialogForUpdate}
                     openAddDialog={this.openAddDialog}
-                    genreList={this.props.genreList} />
+                    userList={this.props.userList} />
+
                 <InsertDialog
-                    insertGenre={this.insertGenre}
-                    genreName={this.state.genreName}
+                    insertUser={this.insertUser}
                     showAddDialog={this.state.showAddDialog}
                     closeAddDialog={this.closeAddDialog} />
-                <UpdateDialog
-                    updateGenre={this.updateGenre}
-                    genreName={this.state.genreName}
+
+                 <UpdateDialog
+                    updateUser={this.updateUser}
+                    name={this.state.name}
+                    lastname={this.state.lastname}
+                    role={this.state.role}
+                    email={this.state.email}
+                    address={this.state.address}
+                    contact={this.state.contact}
                     showUpdateDialog={this.state.showUpdateDialog}
                     closeUpdateDialog={this.closeUpdateDialog} />
+
                 <DeleteDialog
-                    deleteGenre={this.deleteGenre}
+                    deleteUser={this.deleteUser}
                     closeDeleteDialog={this.closeDeleteDialog}
-                    showDeleteDialog={this.state.showDeleteDialog} />
+                    showDeleteDialog={this.state.showDeleteDialog} /> 
             </div>
         )
     }

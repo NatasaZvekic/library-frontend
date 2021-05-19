@@ -14,10 +14,12 @@ function BooksContainer() {
     function useQuery() {
         return new URLSearchParams(useLocation().search);
     }
-    let pageNum = useQuery().get("pageNum");
+    let pageNum = useQuery().get("pageNum"); 
+    let bookName = useQuery().get("bookName");
+    console.log("page num is "  + pageNum)
 
     useEffect(() => {
-        BooksService.GetAllBooks(pageNum).then((data) => {
+        BooksService.GetAllBooks(pageNum, bookName).then((data) => {
             setBooks(data.data.booksList);
             setNumberOfPages(data.data.numberOfPages);
         })

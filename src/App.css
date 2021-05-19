@@ -131,7 +131,7 @@
   height: auto;
   width:60%;
   margin-left: 20%;
-  background: white;
+  background: red;
 }
 hr {
   border:none;
@@ -588,4 +588,30 @@ justify-content: end;
   border: 1px solid #ccc;
   margin-top: 4px;
 
+}
+
+.searchBox{
+  height: 30px;
+  width: 60%;
+  background-color: #ccc;
+  margin-left: 20%;
+  margin-top:30px;
+}
+
+.searchInput{
+  float:left;
+  width: 80%;
+  height:100%;
+  background-color: white;
+  border: 1px solid #ccc
+}
+
+.searchButton{
+  height: 100%;
+  border-radius: 5px;
+  width: 15%;
+  border: 1px solid #ccc;
+  background-color: white;
+  float:left;
+  margin-left: 5%
 }
