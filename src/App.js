@@ -14,6 +14,7 @@ import DelivererContainer from './components/Deliverers/DelivererContainer';
 import EmployeeContainer from './components/Employees/EmployeeContainer';
 import SupplierContainer from './components/Suppliers/SupplierContainer';
 import UserContainer from './components/User/UserContainer';
+import RentalContainer from './components/Rentals/RentalContainer';
 
 function App() {
   
@@ -30,6 +31,7 @@ function App() {
         <Route path="/books" exact component={BooksContainer} />
         <Route path="/authors" exact component={AuthorContainer} />
         <Route path="/deliverers" exact component={DelivererContainer} />
+        <Route path="/rentals" exact component={RentalContainer} />
         <Route path="/books?pageNum?bookName" exact component={BooksContainer} />
         <Route path="/try" exact component={Try} />
         <Route path="/genres" exact component={GenresContainer} />

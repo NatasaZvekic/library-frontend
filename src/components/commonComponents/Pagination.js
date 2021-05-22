@@ -22,7 +22,8 @@ const Paginationn = ({ numberOfPages, url }) => {
   }
 
   return (
-    <ul className='pagination'>
+  
+    <div className='center'>
       {pageNumbers.map(number => (
         <div className={pageNum === `${number}` ? 'page-item-active' : 'page-item'} key={number} >
           <Link to={getUrl(number)} style={{ textDecoration: 'none' }} >
@@ -30,8 +31,8 @@ const Paginationn = ({ numberOfPages, url }) => {
           </Link>
         </div>
       ))}
-    </ul>
-
+ 
+    </div>
 
   );
 };

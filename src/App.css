@@ -131,7 +131,10 @@
   height: auto;
   width:60%;
   margin-left: 20%;
-  background: red;
+  background: white;
+}
+.tableRow{
+  margin-top:-30px
 }
 hr {
   border:none;
@@ -321,11 +324,11 @@ h2{
 }
 
 .blokPhoto{
-  width: 30%;
+  width: 70%;
   float: left;
   height:160px ;
   margin-left: 5%;
-  margin-top:10px;
+  margin-top:-30px;
   background: chocolate;
 }
 
@@ -337,7 +340,13 @@ h2{
   background: white;
   float:left;
 }
+.blokDetail1{
+  width: 6%;
+  height:70% ;
 
+  background: white;
+  float:left;
+}
 .blokTitle{
   font-size: 20px;
   color:lightseagreen;
@@ -348,10 +357,16 @@ h2{
 }
 
 .pagination{
+  margin: auto;
+  float:center;
   width: auto;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
   text-align: center;
 }
-
 .page-item{
   display: inline-block;  
   border: 1px solid #ececec;
@@ -600,7 +615,7 @@ justify-content: end;
 
 .searchInput{
   float:left;
-  width: 80%;
+  width: 60%;
   height:100%;
   background-color: white;
   border: 1px solid #ccc
@@ -613,5 +628,15 @@ justify-content: end;
   border: 1px solid #ccc;
   background-color: white;
   float:left;
-  margin-left: 5%
+  margin-left: 0.1%
+}
+
+.createRental{
+  height: 30px;
+  width: 16%;
+  background-color: white;
+  border: 1px solid #323232;
+  margin-left:8.9%;
+  border-radius: 5px;
+
 }

@@ -43,7 +43,9 @@ const LoginContainer = () => {
             .then((data) => {  console.log(" i do log" + username + " " + password)
                 localStorage.setItem("jwtToken", data.data.token)
                 console.log(data.status + " data");
-                localStorage.setItem("role", data.data.role)
+                localStorage.setItem("role", data.data.role.role)
+                localStorage.setItem("userID" , data.data.role.userID)
+                localStorage.setItem("userName", data.data.role.userName + " " + data.data.role.userLastName)
               //  console.log(data.data.role + " role") 
                 return data.status
             }).catch(function (error) {

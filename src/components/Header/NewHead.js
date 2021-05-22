@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { IoMdMenu } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
-import { FaBeer } from 'react-icons/fa';
 import { AiOutlineClose } from "react-icons/ai";
-import jwtDecode from 'jwt-decode';
 import VerifyToken from './VerifyToken'
+
 export default class NewHeader extends Component {
     state = { clicked: false }
     handleClick = () => {
@@ -12,16 +11,16 @@ export default class NewHeader extends Component {
     }
 
     render() {
-        if(localStorage.getItem("jwtToken")){
-         VerifyToken.verifyToken().then(response =>{
-            if(response.data == false){
-                localStorage.removeItem("jwtToken")
-                localStorage.removeItem("role")
-            } })
-          .catch(error => {
-              
-              console.error('There was an error!', error);
-          });
+        if (localStorage.getItem("jwtToken")) {
+            VerifyToken.verifyToken().then(response => {
+                if (response.data == false) {
+                    localStorage.removeItem("jwtToken")
+                    localStorage.removeItem("role")
+                }
+            })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
         }
         return (
             <div className="NavbarItems1">
@@ -29,7 +28,6 @@ export default class NewHeader extends Component {
                     <i className="menuitem">{this.state.clicked ? <AiOutlineClose className="menuitem" /> : <IoMdMenu className="menuitem" />}</i>
                 </div>
                 <div className={this.state.clicked ? 'nav-menu1 active' : 'nav-menu1'}>
-
                     <NavLink to="/home" className="nav-links1">Home</NavLink>
                     <NavLink to="/about" className="nav-links1">About Us</NavLink>
                     <NavLink to="/books" className="nav-links1">Books</NavLink>
@@ -42,11 +40,11 @@ export default class NewHeader extends Component {
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/deliverers" className="nav-links1">Deliverers</NavLink> : ''}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/rentals" className="nav-links1">Rentals</NavLink> : ''}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/users" className="nav-links1">Users</NavLink> : ''}
+                   
+
                     {<NavLink to={localStorage.getItem("jwtToken") !== null ? "logout" : "/login"} className="nav-links1r">{localStorage.getItem("jwtToken") !== null ? "Log out" : "Log in"}</NavLink>}
-
+                    <div className="nav-links1r">Hello {localStorage.getItem("userName")}!</div>
                 </div>
-
-
             </div>
         )
     }
