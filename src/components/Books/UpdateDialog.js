@@ -17,21 +17,37 @@ export default class UpdateDialog extends Component {
             available: 0,
             publishYear: 0,
             authorID: '',
-            bookID: ''
+            bookName: '',
+            genreID : '',
+            url: '',
+            supplierID : '',
         };
 
     }
-    setAuthor = (author, key) => {
-        console.log("key " + author)
+    setAuthor = (author) => {
         this.setState({ author: author })
     }
 
+    setBook = (bookName) => {
+        this.setState({ bookName: bookName })
+    }
+
+    setGenre = (genreID) => {
+        this.setState({ genreID: genreID })
+    }
+
+    setSupplier = (supplierID) => {
+        this.setState({ supplierID: supplierID })
+    }
+
     onChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
+        if (e.target.name == "available" || e.target.name == "publishYear")  {
+            this.setState({ [e.target.name]: +e.target.value })
+        } else {
+            this.setState({ [e.target.name]: e.target.value })
+        }
     }
-    setBook = (bookID) => {
-        this.setState({ bookID: bookID })
-    }
+  
     render() {
         return (
             <Modal
@@ -42,18 +58,13 @@ export default class UpdateDialog extends Component {
                     <Modal.Title>Update resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form>
-                        <select
-                            onChange={(event) => { this.setBook(event.target.value) }} >
-                            {this.props.listOfBooks.map((book) => {
-                                return (
-                                    <option value={book.bookID}>{book.bookName}</option>
-                                )
-                            })}
-
-                        </select>
-                        <br />
-                    </form>
+                <input
+                        type="text"
+                        name="bookName"
+                        className="inputFiled"
+                        defaultValue={this.props.bookName}
+                        onChange={this.onChange.bind(this)}
+                    />
                     <input
                         type="number"
                         name="available"
@@ -70,31 +81,46 @@ export default class UpdateDialog extends Component {
                     />
                     <input
                         type="text"
-                        name="publishYear"
+                        name="url"
                         className="inputFiled"
-                        defaultValue={this.state.author === '' ? this.props.authorName : this.state.author}
+                        defaultValue={this.props.url}
                         onChange={this.onChange.bind(this)}
                     />
-                    <form>
-                        <select
-                            onChange={(event) => { this.setAuthor(event.target.value) }}  >
-                            {this.props.authorsList.map((author, index) => {
-                                return (
-                                    <option value={author.authorID}>{author.authorName}</option>
-                                )
-                            })}
-                        </select>
-                    </form>
-
+                    <select style={{ marginLeft: '23px' }}
+                        onChange={(event) => { this.setAuthor(event.target.value) }}  >
+                        {this.props.authorsList.map((author, index) => {
+                            return (
+                                <option value={author.authorID}>{author.authorName}</option>
+                            )
+                        })}
+                    </select>
+                    <br/>
+                    <select style={{ marginLeft: '23px' }}
+                        onChange={(event) => { this.setGenre(event.target.value) }}  >
+                        {this.props.genresList.map((genre, index) => {
+                            return (
+                                <option value={genre.genreID}>{genre.genreName}</option>
+                            )
+                        })}
+                    </select>
+                    <br/>
+                    <select style={{ marginLeft: '23px' }}
+                        onChange={(event) => { this.setSupplier(event.target.value) }}  >
+                        {this.props.suppliersList.map((supplier, index) => {
+                            return (
+                                <option value={supplier.supplierID}>{supplier.companyName}</option>
+                            )
+                        })}
+                    </select>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeUpdateDialog}> Close </Button>
                     <Button onClick={() =>
-                        this.props.updateAuthor(
-                            this.state.name == "" ? this.props.name : this.state.name,
-                            this.state.bookID == "" ? this.props.bookID : this.state.bookID,
+                        this.props.updateBook(
+                            this.state.bookName == "" ? this.props.bookName : this.state.bookName,
                             this.state.available == 0 ? this.props.available : this.state.available,
                             this.state.publishYear == 0 ? this.props.publishYear : this.state.publishYear,
+                            this.state.url == "" ? this.props.url : this.state.url
                         )
                     }
                         variant="primary">Update</Button>

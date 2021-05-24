@@ -28,6 +28,7 @@ export default class InsertDialog extends Component {
                     <Modal.Body>
                         <input
                             type="text"
+                            placeholder =  "Genre name"
                             name={this.props.genreName}
                             className="inputFiled"
                             defaultValue={this.props.genreName}

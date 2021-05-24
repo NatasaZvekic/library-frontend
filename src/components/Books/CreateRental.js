@@ -15,7 +15,6 @@ export default class CreateRental extends Component {
 
     }
     changeBook(bookName) {
-        console.log("bookName " + bookName)
         this.setState({ id: bookName })
     }
     render() {

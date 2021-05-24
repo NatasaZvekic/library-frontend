@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from 'react'
-import NewHead from '../Header/NewHead'
+import NewHead from '../Header/Header'
 import RentalList from './RentalList';
 import RentalService from './RentalService';
-import UserSevice from '../User/UserService'
+import EmployeeService from  '../Employees/EmployeeService'
+import DeliveryService from '../Deliverers/DelivererService'
 
 function RentalContainer() {
-    const [rentals, setRentals] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [books, setBooks] = useState([]);
-
+    const [completedRentals, setCompletedRentals] = useState([]);
+    const [uncompletedRentals, setUncompletedRentals] = useState([]);
+    const [employees, setEmployees] = useState([]);
+    const [deliverers, setDeliverers] = useState([]);
 
     useEffect(() => {
-        RentalService.getAllRentals().then((data) => {
-            setRentals(data.data);
+        RentalService.getAllCompletedRentals().then((data) => {
+            setCompletedRentals(data.data);
         })
-        UserSevice.getAllUsers().then((data)=>{
-            setUsers(data.data)
+        RentalService.getAllUncompletedRentals().then((data) => {
+            setUncompletedRentals(data.data);
+        })
+        EmployeeService.getAllEmployees().then((data)=>{
+            setEmployees(data.data)
+        })
+        DeliveryService.getAllDeliverers().then((data)=>{
+            setDeliverers(data.data)
         })
         
     })
 
     const deleteRental = (id) => {
         RentalService.deleteRental(id)
+    }
+
+    const updateRental = (id, deliveryID, employeeID) => {
+        RentalService.updateRental(id, deliveryID, employeeID)
     }
 
  
@@ -35,9 +46,13 @@ function RentalContainer() {
     return (
         <div className="login">
             <NewHead />
-            <RentalList rentalList={rentals}
+            <RentalList 
+            completedRentals={completedRentals}
+            uncompletedRentals={uncompletedRentals}
             deleteRental = {deleteRental}
-            usersList ={ users}
+            employeeList = {employees}
+            deliveryList = {deliverers}
+            updateRental = {updateRental}
             />
         </div>
     )

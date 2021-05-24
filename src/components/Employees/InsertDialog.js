@@ -39,12 +39,14 @@ export default class InsertDialog extends Component {
                     type="text"
                     name="name"
                     className="inputFiled"
+                    placeholder = "Employee name"
                     defaultValue={this.props.name}
                     onChange={this.onChange.bind(this)}
                 />
                 <input
                     type="text"
                     name="lastname"
+                    placeholder = "Employee lastName"
                     className="inputFiled"
                     defaultValue={this.props.lastname}
                     onChange={this.onChange.bind(this)}
@@ -53,6 +55,7 @@ export default class InsertDialog extends Component {
                     type="number"
                     name="contact"
                     className="inputFiled"
+                    placeholder = "Employee contact"
                     defaultValue={this.props.contact}
                     onChange={this.onChange.bind(this)}
                 />
@@ -60,6 +63,7 @@ export default class InsertDialog extends Component {
                     type="text"
                     name="email"
                     className="inputFiled"
+                    placeholder = "Employee email"
                     defaultValue={this.props.email}
                     onChange={this.onChange.bind(this)}
                 />
@@ -68,6 +72,7 @@ export default class InsertDialog extends Component {
                     name="ssn"
                     className="inputFiled"
                     defaultValue={this.props.ssn}
+                    placeholder = "Employee ssn"
                     onChange={this.onChange.bind(this)}
                 />
                 <input
@@ -75,12 +80,14 @@ export default class InsertDialog extends Component {
                     name="role"
                     className="inputFiled"
                     defaultValue={this.props.role}
+                    placeholder = "Employee role"
                     onChange={this.onChange.bind(this)}
                 />
                 <input
-                    type="text"
+                    type="password"
                     name="password"
                     className="inputFiled"
+                    placeholder = "Employee password"
                     defaultValue={this.props.password}
                     onChange={this.onChange.bind(this)}
                 />

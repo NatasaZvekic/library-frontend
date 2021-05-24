@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-
 import News from './News'
 import newsOne from '../assets/photo/newsOne.jpg'
 import newsTwo from '../assets/photo/newsTwo.jpg'
 import newsThree from '../assets/photo/newsThree.jpg'
-import newsFour from '../assets/photo/newsFour.jpg'
-import Try from '../../Try'
-import NewHead from '../Header/NewHead'
+import NewHead from '../Header/Header'
 
 export default class Home extends Component {
 
@@ -14,7 +11,7 @@ export default class Home extends Component {
         return (
             <body>
                 <NewHead />
-                <div className="container">
+                <div className="container" >
                     <News photoL={newsOne} side="l"
                         titleL={" Programs for Student Groups Led by a Library Facilitator"}
                         subtitleL={"VIRTUAL WORKSHOPS"}

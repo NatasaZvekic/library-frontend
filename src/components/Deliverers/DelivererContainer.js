@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NewHead from "../Header/NewHead";
+import NewHead from "../Header/Header";
 import DelivererList from "./DelivererList";
 import DelivererService from "./DelivererService";
 

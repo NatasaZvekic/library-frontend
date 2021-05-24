@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NewHead from "../Header/NewHead";
+import NewHead from "../Header/Header";
 import EmployeeList from "./EmployeeList";
 import EmployeeService from "./EmployeeService";
 

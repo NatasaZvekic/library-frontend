@@ -15,12 +15,14 @@ export default class BookList extends Component {
             available: '',
             publishYear: '',
             authorName : '',
+            authorID: '',
             aa: '',
             bookID : '',
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
         this.closeUpdateDialog = this.closeUpdateDialog.bind(this)
         this.DeleteBook = this.DeleteBook.bind(this)
+        this.updateBook = this.updateBook.bind(this)
         // this.openDialogForDelete = this.openDialogForDelete.bind(this)
     }
 
@@ -30,14 +32,16 @@ export default class BookList extends Component {
         this.setState({ showDeleteDialog: true })
     }
 
-    openDialogForUpdate = (book) => { console.log("name  a " + book.authorName)
+    openDialogForUpdate = (book) => { console.log("name  a " + book.url)
         this.setState({ showUpdateDialog: true })
         this.setState({ id: book.bookID })
+        this.setState({ url: book.url })
         this.setState({ bookName: book.bookName })
         this.setState({ available: book.available })
         this.setState({ publishYear: book.publishYear })
         this.setState({authorName : book.authorName })
         this.setState({bookID : book.bookID })
+        this.setState({authorID : book.authorID })
     }
     closeUpdateDialog() {
         this.setState({ showUpdateDialog: false })
@@ -52,6 +56,9 @@ export default class BookList extends Component {
         this.props.DeleteBook(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
+    updateBook( bookName, available ,publishYear,url) {
+        this.props.updateBook(this.state.id,bookName, available ,publishYear,url)
+    }
     setAuthor = (author, key) => { console.log("author " + author)
     this.setState({ aa: author })
 }
@@ -63,7 +70,9 @@ export default class BookList extends Component {
                     <Book
                         listOfBooks={this.props.listOfBooks}
                         openDialogForUpdate={this.openDialogForUpdate}
-                        openDialogForDelete={this.openDialogForDelete}>
+                        openDialogForDelete={this.openDialogForDelete}
+                    >
+
                     </Book>
                     <DeleteDialog
                         closeDeleteDialog={this.closeDeleteDialog}
@@ -72,14 +81,17 @@ export default class BookList extends Component {
                     />
                     <UpdateDialog
                         authorsList={this.props.authorsList}
-                        listOfBooks={this.props.listOfBooks}
                         showUpdateDialog={this.state.showUpdateDialog}
                         closeUpdateDialog={this.closeUpdateDialog}
                         bookName={this.state.bookName}
                         available={this.state.available}
                         publishYear={this.state.publishYear}
-                        bookID={this.state.bookID}
+                        bookName={this.state.bookName}
+                        genresList={this.props.genresList}
+                        suppliersList={this.props.suppliersList}
                         authorName={this.state.authorName}
+                        updateBook={this.updateBook}
+                        url={this.state.url}
                     ></UpdateDialog>
                    
                 </div>

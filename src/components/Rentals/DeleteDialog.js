@@ -1,6 +1,5 @@
 import { Button, Modal } from 'react-bootstrap';
 import React, { Component } from 'react'
-import { Table } from 'react-bootstrap'
 
 export default class DeleteDialog extends Component {
     render() {

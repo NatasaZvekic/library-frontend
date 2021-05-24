@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GenreService from './GenreService'
 import GenreList from './GenreList'
-import NewHead from '../Header/NewHead'
+import NewHead from '../Header/Header'
 
 function GenresContainer() {
     const [genres, setGenres] = useState([]);

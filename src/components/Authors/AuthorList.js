@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Table, Modal, Button } from 'react-bootstrap'
 import InsertDialog from './InsertDialog';
 import DeleteDialog from './DeleteDialog';
 import UpdateDialog from './UpdateDialog';
@@ -48,12 +47,11 @@ export default class AuthorList extends Component {
         this.setState({ yearOfBirth: '' })
         
     }
-    closeAddDialog() { console.log("close")
+    closeAddDialog() { 
         this.setState({ showAddDialog: false })
         this.setState({ name: '' })
         this.setState({ lastname: '' })
         this.setState({ yearOfBirth: '' })
-        console.log("states " + this.state.name)
     }
     deleteAuthor() {
         this.props.deleteAuthor(this.state.id)

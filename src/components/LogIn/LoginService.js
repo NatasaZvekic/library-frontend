@@ -1,7 +1,7 @@
 import axios from 'axios'
 const LoginService = {
 
-    AddNewBook: (username, password) => {
+    LoginUser: (username, password) => {
         const user = {
             email: username,
             password:password

@@ -18,13 +18,15 @@ const BooksService = {
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
     InsertBook : (bookName,supplierID,available,genreID,authorID,publishYear,url ) => {
+        console.log(bookName, available, publishYear, url)
         const book = {
             bookName: bookName,
-            authorID : authorID,
-            genreID: genreID,
-            supplierID: supplierID,
+            authorID : "a11369d9-2a00-4c7c-9340-48688dd8addd",
+            genreID: "6374f10a-a74c-48db-b60e-16c623228327",
+            supplierID:  "0c7ac0b5-ff66-4e0e-9f9a-09a4e82eb760",
             url: url,
-            publishYear : publishYear
+            publishYear : publishYear,
+            available : available
         }
         const header = {
             "Content-Type": 'application/json',
@@ -35,13 +37,33 @@ const BooksService = {
             headers: header
         })
     },
-    
+    updateBook: (bookID, bookName, available ,publishYear,url ) => {
+        console.log("update " +  bookName, available ,publishYear,url)
+        const newBook = {
+            bookName: bookName,
+            authorID : "a11369d9-2a00-4c7c-9340-48688dd8addd",
+            genreID: "6374f10a-a74c-48db-b60e-16c623228327",
+            supllierID: "0c7ac0b5-ff66-4e0e-9f9a-09a4e82eb760",
+            url: url,
+            publishYear : publishYear,
+            available : available
+        }
+        const header = {
+            "Content-Type": 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
+        }
+        return axios.put(`https://localhost:44324/books/${bookID}`, newBook , {
+            headers: header
+        })
+    },
+
     InsertRental: (bookID) => { console.log("Di " + bookID + " " + localStorage.getItem("userID"))
         const rental = {
             bookID: bookID,
             userID : localStorage.getItem("userID"),
-            employeeID: "cfed17ac-ecc3-4a23-bde8-0122cf8a07c9",
-            deliveryID: "1e557702-79b4-459a-a5e7-23ce94977e02"
+            employeeID: "747500c8-47cf-4d99-afba-5befacd64485",
+            deliveryID: "e69f696d-a5eb-4502-85cb-52b1ac548de1"
         }
         const header = {
             "Content-Type": 'application/json',

@@ -22,9 +22,8 @@ export default class InsertDialog extends Component {
         };
 
     }
-    setAuthor = (author, key) => {
-        console.log("key " + author)
-        this.setState({ authorID: author })
+    setAuthor = (authorID) => {
+        this.setState({ authorID: authorID })
     }
 
     onChange(e) {
@@ -36,8 +35,8 @@ export default class InsertDialog extends Component {
     setSupplier = (supplierID) => {
         this.setState({ supplierID: supplierID })
     }
-
-    setGenre = (genreID) => {
+ 
+    setGenre = (genreID) => { console.log("gid " + genreID)
         this.setState({ genreID: genreID })
     }
     render() {
@@ -83,7 +82,7 @@ export default class InsertDialog extends Component {
                         onChange={this.onChange.bind(this)}
                     />
                     <form>
-                        <select
+                    <select style={{marginLeft: '23px'}}
                             onChange={(event) => { this.setGenre(event.target.value) }}  >
                             {this.props.genresList.map((genre, index) => {
                                 return (
@@ -93,17 +92,17 @@ export default class InsertDialog extends Component {
                         </select>
                     </form>
                     <form>
-                        <select
+                    <select style={{marginLeft: '23px'}}
                             onChange={(event) => { this.setAuthor(event.target.value) }}  >
-                            {this.props.authorsList.map((author, index) => {
+                            {this.props.authorsList.map((author) => {
                                 return (
-                                    <option value={author.authorID}>{author.authorName}</option>
+                                    <option value={author.authorID}>{author.authorName + " " + author.authorLastName}</option>
                                 )
                             })}
                         </select>
                     </form>
                     <form>
-                        <select
+                    <select style={{marginLeft: '23px'}}
                             onChange={(event) => { this.setSupplier(event.target.value) }}  >
                             {this.props.suppliersList.map((supplier) => {
                                 return (

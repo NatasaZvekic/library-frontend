@@ -1,7 +1,12 @@
 import axios from 'axios'
 const RentalService = {
 
-    getAllRentals: () => {
+    getAllCompletedRentals: () => {
+        return axios.get("https://localhost:44324/rentals?completed=true",
+            { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
+    },
+
+    getAllUncompletedRentals: () => {
         return axios.get("https://localhost:44324/rentals",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
@@ -11,20 +16,21 @@ const RentalService = {
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
-    // updateGenre: (genreName, genreID) => {
-    //     const genre = {
-    //         genreName: genreName,
-    //     }
-    //     const header = {
-    //         "Content-Type": 'application/json',
-    //         "Access-Control-Allow-Origin": "*",
-    //         "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
-    //     }
-    //     return axios.put(`https://localhost:44324/genres/${genreID}`, genre , {
-    //         headers: header
-    //     })
+    updateRental : (rentalID, deliveryID, employeeID) => {
+        const rental = {
+            deliveryID: deliveryID,
+            employeeID : employeeID
+        }
+        const header = {
+            "Content-Type": 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
+        }
+        return axios.put(`https://localhost:44324/rentals/${rentalID}`, rental , {
+            headers: header
+        })
 
-    // },
+    },
   
 
 }

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import Header from '../Header/Header'
-import NewHead from '../Header/NewHead'
+import NewHead from '../Header/Header'
 import Pasus from './Pasus'
-export default class AboutUs extends Component {
 
+export default class AboutUs extends Component {
     render() {
         return (
             <div>

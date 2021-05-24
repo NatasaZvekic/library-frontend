@@ -34,6 +34,7 @@ export default class InsertDialog extends Component {
                     <input
                         type="text"
                         name="name"
+                        placeholder="Company name"
                         className="inputFiled"
                         defaultValue={this.props.name}
                         onChange={this.onChange.bind(this)}
@@ -42,6 +43,7 @@ export default class InsertDialog extends Component {
                         type="number"
                         name="contact"
                         className="inputFiled"
+                        placeholder="Supplier contact"
                         defaultValue={this.props.contact}
                         onChange={this.onChange.bind(this)}
                     />
@@ -49,6 +51,7 @@ export default class InsertDialog extends Component {
                         type="text"
                         name="address"
                         className="inputFiled"
+                        placeholder="Company address"
                         defaultValue={this.props.address}
                         onChange={this.onChange.bind(this)}
                     />

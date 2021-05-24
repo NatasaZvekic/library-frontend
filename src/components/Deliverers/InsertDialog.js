@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Modal, Button } from 'react-bootstrap'
+import { Modal, Button } from 'react-bootstrap'
 
 export default class InsertDialog extends Component {
     constructor(props) {
@@ -35,6 +35,7 @@ export default class InsertDialog extends Component {
                         type="text"
                         name="companyName"
                         className="inputFiled"
+                        placeholder="Company name"
                         defaultValue={this.state.companyName}
                         onChange={this.onChange.bind(this)}
                     />
@@ -42,6 +43,7 @@ export default class InsertDialog extends Component {
                         type="text"
                         name="address"
                         className="inputFiled"
+                        placeholder="Deliverer address"
                         defaultValue={this.state.address}
                         onChange={this.onChange.bind(this)}
                     />
@@ -49,6 +51,7 @@ export default class InsertDialog extends Component {
                         type="number"
                         name="contact"
                         className="inputFiled"
+                        placeholder="Deliverer contact"
                         defaultValue={this.state.contact}
                         onChange={this.onChange.bind(this)}
                     />

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router';
 import Books from './Books';
 import BooksService from './BooksService';
-import Header from '..//Header/Header'
 import Paginationn from '../commonComponents/Pagination';
-import NewHead from '../Header/NewHead';
+import NewHead from '../Header/Header';
 import AuthorService from '../Authors/AuthorService'
 import GenreService from '../Genres/GenreService'
 import SupplierService from '../Suppliers/SupplierService'
@@ -40,7 +39,7 @@ function BooksContainer() {
     })
 
     const Add= () =>{
-        BooksService.AddNewBook()
+      //  BooksService.AddNewBook()
     }
 
     const DeleteBook = (id) => { console.log("ima + " +  id)
@@ -52,7 +51,12 @@ function BooksContainer() {
     }
 
     const InsertBook = (bookName,supplierID,available,genreID,authorID,publishYear,url) => {
+        
         BooksService.InsertBook(bookName,supplierID,available,genreID,authorID,publishYear,url)
+    }
+
+    const updateBook = (bookID, bookName, available ,publishYear,url) => {
+        BooksService.updateBook(bookID, bookName, available ,publishYear,url)
     }
     const url = `${window.location.pathname}`
     return (
@@ -66,6 +70,7 @@ function BooksContainer() {
             suppliersList={supplier}
             InsertRental={InsertRental}
             InsertBook={InsertBook}
+            updateBook = {updateBook}
             />
             <Paginationn numberOfPages={numberOfPages}  url="books"/>
         </div>

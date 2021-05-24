@@ -1,63 +1,38 @@
-// import React, { Component } from 'react'
-// import LoginService from './LoginService'
-// import FormSignUp from './FormSignUp';
-// import Example from './Example';
-
-
-// export default class LoginContainer extends Component {
-
-//      Login(username, password) { console.log(" i do log" + username + " " + password)
-//         LoginService.AddNewBook(username, password)
-//             .then((data) => { 
-//                 localStorage.setItem("jwtToken", data.data.token)
-//                 console.log(data.data.token + " data");
-//                 localStorage.setItem("role", data.data.role)
-//                 console.log(data.data.role + " role") 
-//                 return data.data
-//             }).catch(function (error) {
-//             })       
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <FormSignUp login={this.Login}/>
-           
-//             </div>
-//         )
-//     }
-// }
-
-
 import React from 'react'
 import { connect } from 'react-redux'
 import LoginService from './LoginService'
 import FormSignUp from './FormSignUp';
-import Header from '../Header/Header'
-import car from '../assets/photo/library1.jpg'
-import Try from '../../Try';
-import NewHead from '../Header/NewHead';
+import background from '../assets/photo/unnamed.jpg'
+import NewHead from '../Header/Header';
+
 const LoginContainer = () => {
 
-    const  Login = async (username, password) => { console.log(" i do log" + username + " " + password)
-       await LoginService.AddNewBook(username, password)
-            .then((data) => {  console.log(" i do log" + username + " " + password)
+    const Login = async (username, password) => {
+        console.log(" i do log" + username + " " + password)
+        await LoginService.LoginUser(username, password)
+            .then((data) => {
+                console.log(" i do log" + username + " " + password)
                 localStorage.setItem("jwtToken", data.data.token)
                 console.log(data.status + " data");
                 localStorage.setItem("role", data.data.role.role)
-                localStorage.setItem("userID" , data.data.role.userID)
+                localStorage.setItem("userID", data.data.role.userID)
                 localStorage.setItem("userName", data.data.role.userName + " " + data.data.role.userLastName)
-              //  console.log(data.data.role + " role") 
+                //  console.log(data.data.role + " role") 
+                localStorage.setItem("status", data.status)
                 return data.status
             }).catch(function (error) {
-            })       
+                console.log("error " + error)
+                localStorage.setItem("status", 401)
+
+                return "error"
+            })
     }
 
     return (
-        <div className="login" style={{'backgroundImage' : car}}>
-            <NewHead/>
-            {/* <Try login={Login}/> */}
-              <FormSignUp login={Login}/>
-            
+        <div className="login" style={{backgroundImage : `url(${background})`}}>
+            <NewHead />
+            <FormSignUp login={Login} />
+
         </div>
     )
 }

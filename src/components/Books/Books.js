@@ -1,45 +1,13 @@
-import { Modal, Button } from 'react-bootstrap'
-import React, { Component, useState } from 'react'
-import Book from './BookTable'
-import { Link } from '@material-ui/core'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import Try from '../../Try';
-import DeleteDialog from './DeleteDialog';
 import BookList from './BookList';
 import CreateRental from './CreateRental'
 import InsertDialog from './InsertDialog'
-// export default class Books extends Component {
-
-//     render() {
-//         return (
-//             <body>
-//                 <div className="searchBox">
-//                     <input 
-//                     className="searchInput"
-//                     type="text"
-//                     placeholder="Enter book title you are looking for.."
-//                     />
-//                     <button  onClick={this.routeChange} className="searchButton">Search</button>
-//                 </div>
-//                 <div className="list">
-//                     {this.props.listOfBooks.map(book => {
-//                         return (
-//                             <Book book={book} />
-//                         )
-//                     })
-//                     }
-//                 </div>
-//             </body>
-//         )
-//     }
-// }
-
 
 const Books = (props) => {
 
     let history = useHistory()
     const [bookName, setBookName] = useState('');
-    const [showDeleteDialog, setShowDeleteDialog] = useState(false)
     const [showInsertRentalDialog, setDialogForInsertRental] = useState(false)
     const [showInsertBookDialog, setDialogForInsertBook] = useState(false)
 
@@ -51,9 +19,7 @@ const Books = (props) => {
     const onChange = (e) => {
         setBookName(e.target.value)
     }
-    const openDialogForDelete = (id) => {
-        setShowDeleteDialog(true)
-    }
+
     const closeInsertRentalDialog = () => {
         setDialogForInsertRental(false)
     }
@@ -68,15 +34,13 @@ const Books = (props) => {
         setDialogForInsertBook(true)
     }
 
-    const closeDeleteDialog = () => {
-
-    }
     const InsertRental = (id) => {
         props.InsertRental(id)
         closeInsertRentalDialog()
     }
-    const insertBook = ( bookName,supplierID,available,genreID,authorID,publishYear,url) => {
-        props.InsertBook(bookName,supplierID,available,genreID,authorID,publishYear,url)
+    const insertBook = (bookName, supplierID, available, genreID, authorID, publishYear, url) => {
+        props.InsertBook(bookName, supplierID, available, genreID, authorID, publishYear, url)
+        closeInsertDialog()
     }
     return (
         <body>
@@ -88,6 +52,7 @@ const Books = (props) => {
                     onChange={onChange}
                 />
                 <button className="searchButton" onClick={submit}>Search</button>
+
                 {localStorage.getItem("role") === "admin" ?
                     <button onClick={openDialogForInsertBook} className="createRental"> Add book
                     <svg style={{ marginLeft: '6px', marginBottom: '4px' }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
@@ -108,9 +73,11 @@ const Books = (props) => {
                 authorsList={props.authorsList}
                 genresList={props.genresList}
                 suppliersList={props.suppliersList}
+                updateBook={props.updateBook}
+                add={props.add}
             >
-
             </BookList>
+
             <CreateRental
                 openDialogForInsertRental={showInsertRentalDialog}
                 closeInsertRentalDialog={closeInsertRentalDialog}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import UserService from './UserService'
-import NewHead from '../Header/NewHead'
+import NewHead from '../Header/Header'
 import UserList from './UserList';
 
 function UserContainer() {

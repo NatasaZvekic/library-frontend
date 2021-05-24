@@ -544,7 +544,7 @@ justify-content: end;
 .menu-icon1{
   display: none;
 }
-@media screen and (max-width: 960px){
+@media screen and (max-width: 1200px){
   .NavbarItems1{
     position: relative
     
@@ -639,4 +639,20 @@ justify-content: end;
   margin-left:8.9%;
   border-radius: 5px;
 
+}
+
+/* rentals buttons */
+.buttonsList{
+  width: 80%;
+  margin-left: 10%;
+  background-color: white;
+}
+.btnUncompletedRentals{
+  width: 50%;
+  float: left;
+  background-color: white;
+  border: 1px solid #323232;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-top: 50px;
 }

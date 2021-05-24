@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NewHead from "../Header/NewHead";
+import NewHead from "../Header/Header";
 import AuthorList from "./AuthorList";
 import AuthorService from "./AuthorService";
 
@@ -21,16 +21,17 @@ function AuthorContainer() {
         AuthorService.updateAuthor(id, name, lastname, year)
     }
 
-    const insertAuthor = ( name, lastname, year) => {
-        AuthorService.insertAuthor( name, lastname, year)
+    const insertAuthor = (name, lastname, year) => {
+        AuthorService.insertAuthor(name, lastname, year)
     }
     return (
         <div>
             <NewHead />
-            <AuthorList authorsList={authors}
+            <AuthorList
+                authorsList={authors}
                 deleteAuthor={deleteAuthor}
-                updateAuthor={updateAuthor} 
-                insertAuthor={insertAuthor}/>
+                updateAuthor={updateAuthor}
+                insertAuthor={insertAuthor} />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Modal from 'react-modal';
+import { Button, Modal } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 
 export default class Logout extends Component {
@@ -13,28 +13,37 @@ export default class Logout extends Component {
 
     logOut() {
         this.setState({ loggedOut: true })
-        localStorage.setItem("logged", false)
+        localStorage.removeItem("jwtToken")
+        localStorage.removeItem("role")
+        localStorage.removeItem("userID")
+        localStorage.removeItem("userName")
+        localStorage.setItem("logged", false);
+      
     }
     cancel() {
         this.setState({ loggedOut: true })
     }
     render() {
-        localStorage.removeItem("jwtToken");
-        localStorage.removeItem("role")
+        // localStorage.removeItem("jwtToken");
+        // localStorage.removeItem("role")
         if (this.state.loggedOut === true) {
             return <Redirect to="/home" />
         }
         return (
+            <Modal.Dialog>
+                <Modal.Header closeButton>
+                    <Modal.Title>Log out</Modal.Title>
+                </Modal.Header>
 
-            <div>
-                <p>sdfsadf</p>
-                <Modal className="modal"
-                    isOpen="true">
-                    <h2 >Are you sure you want to log out?</h2>
-                    <button className="LogOutBtn"onClick={this.logOut.bind(this)}>Log out</button>
-                    <button className="LogOutBtn" onClick={this.cancel.bind(this)}>Cancel</button>
-                </Modal>
-            </div>
+                <Modal.Body>
+                    <p>Are you sure you want to logout?</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button onClick={this.cancel.bind(this)} variant="secondary">Close</Button>
+                    <Button onClick={this.logOut.bind(this)} variant="primary">Logout</Button>
+                </Modal.Footer>
+            </Modal.Dialog>
         )
     }
 }

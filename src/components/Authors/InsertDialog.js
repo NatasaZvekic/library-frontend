@@ -28,13 +28,14 @@ export default class InsertDialog extends Component {
             backdrop="static"
             keyboard={false} >
             <Modal.Header >
-                <Modal.Title>Add new genre</Modal.Title>
+                <Modal.Title>Add new author</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <input
                     type="text"
                     name="name"
                     className="inputFiled"
+                    placeholder="Author name"
                     defaultValue={this.props.name}
                     onChange={this.onChange.bind(this)}
                 />
@@ -42,6 +43,7 @@ export default class InsertDialog extends Component {
                     type="text"
                     name="lastname"
                     className="inputFiled"
+                    placeholder="Author lastname"
                     defaultValue={this.props.lastname}
                     onChange={this.onChange.bind(this)}
                 />
@@ -49,6 +51,7 @@ export default class InsertDialog extends Component {
                     type="number"
                     name="yearOfBirth"
                     className="inputFiled"
+                    placeholder="Author year of birth"
                     defaultValue={this.props.yearOfBirth}
                     onChange={this.onChange.bind(this)}
                 />

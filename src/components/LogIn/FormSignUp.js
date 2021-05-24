@@ -2,8 +2,7 @@ import React from 'react'
 import validate from './ValidateInfo'
 import { useState } from 'react'
 import { useHistory } from "react-router"
-import { Button, Modal } from 'react-bootstrap';
-
+import {  Modal } from 'react-bootstrap';
 
 const FormSignUp = (props) => {
     const [errors, setErrors] = useState({})
@@ -26,8 +25,8 @@ const FormSignUp = (props) => {
     
     const fetchUserEmail = async () => {
         const response = await props.login(values.email, values.password)
-        console.log("res " + localStorage.getItem("jwtToken"))
-        if (response !== null) {
+        console.log("res " + localStorage.getItem("status"))
+        if (localStorage.getItem("status") === "200") {
             history.push("/home")
         }
         else {
@@ -74,7 +73,7 @@ const FormSignUp = (props) => {
                 {<p>{errors.email}</p>}
 
                 <input
-                    type="text"
+                    type="password"
                     placeholder="Password"
                     className="textBox"
                     name="password"
