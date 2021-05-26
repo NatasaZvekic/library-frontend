@@ -58,6 +58,7 @@ export default class BookList extends Component {
     }
     updateBook( bookName, available ,publishYear,url) {
         this.props.updateBook(this.state.id,bookName, available ,publishYear,url)
+        this.closeUpdateDialog()
     }
     setAuthor = (author, key) => { console.log("author " + author)
     this.setState({ aa: author })

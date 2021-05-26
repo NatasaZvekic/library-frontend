@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NewHead from "../Header/Header";
 import EmployeeList from "./EmployeeList";
 import EmployeeService from "./EmployeeService";
+import background from '../assets/photo/unnamed.jpg'
 
 function EmployeeContainer(){
 
@@ -25,7 +26,7 @@ function EmployeeContainer(){
         EmployeeService.insertEmployee(name, lastname, role, email, password, contact, ssn)
     }
     return (
-        <div> 
+        <div className="login" style={{backgroundImage : `url(${background})`}}> 
             <NewHead/>
             <EmployeeList
             employeesList={employees}

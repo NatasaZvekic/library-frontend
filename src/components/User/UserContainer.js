@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import UserService from './UserService'
 import NewHead from '../Header/Header'
 import UserList from './UserList';
+import background from '../assets/photo/unnamed.jpg'
 
 function UserContainer() {
     const [users, setUsers] = useState([]);
@@ -26,7 +27,7 @@ function UserContainer() {
     }
 
     return (
-        <div className="login">
+        <div className="login" style={{ backgroundImage: `url(${background})` }}>
             <NewHead />
             <UserList
                 userList={users}

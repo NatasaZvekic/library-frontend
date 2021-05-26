@@ -3,7 +3,6 @@ import { IoMdMenu } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
 import { AiOutlineClose } from "react-icons/ai";
 import VerifyToken from './VerifyToken'
-import App from '../../App';
 
 export default class Header extends Component {
     state = { clicked: false }
@@ -11,7 +10,7 @@ export default class Header extends Component {
         this.setState({ clicked: !this.state.clicked })
     }
 
-    render() {
+    render() { console.log("role " + localStorage.getItem("role"))
         if (localStorage.getItem("jwtToken")) {
             VerifyToken.verifyToken().then(response => {
                 if (response.data == false) {
@@ -26,9 +25,9 @@ export default class Header extends Component {
                 });
         }
         return (
-            
+
             <div className="NavbarItems1">
-                <App/>
+
                 <div className="menu-icon1" onClick={this.handleClick}>
                     <i className="menuitem">{this.state.clicked ? <AiOutlineClose className="menuitem" /> : <IoMdMenu className="menuitem" />}</i>
                 </div>
@@ -45,7 +44,7 @@ export default class Header extends Component {
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/deliverers" className="nav-links1">Deliverers</NavLink> : ''}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/rentals" className="nav-links1">Rentals</NavLink> : ''}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/users" className="nav-links1">Users</NavLink> : ''}
-                   
+                    {localStorage.getItem("role") === "user" ? <NavLink to="/myRentals" className="nav-links1">My Rentals</NavLink> : ''}
                     {<NavLink to={localStorage.getItem("jwtToken") !== null ? "logout" : "/login"} className="nav-links1r">{localStorage.getItem("jwtToken") !== null ? "Log out" : "Log in"}</NavLink>}
                     {localStorage.getItem("userName") !== null ? <div className="nav-links1r">Hello {localStorage.getItem("userName")}!</div> : ''}
                 </div>

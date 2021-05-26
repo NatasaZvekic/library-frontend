@@ -3,6 +3,7 @@ import validate from './ValidateInfo'
 import { useState } from 'react'
 import { useHistory } from "react-router"
 import {  Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const FormSignUp = (props) => {
     const [errors, setErrors] = useState({})
@@ -81,7 +82,8 @@ const FormSignUp = (props) => {
                     onChange={handleChange}
                 />
                 {errors.password && <p>{errors.password}</p>}
-                <button type="submit" className="loginBtn">Log in</button>
+                <button type="submit" className="loginBtn">Log in</button> <br/>
+                <Link to="register" className="registerBtn">Dont have an account? Register</Link>
             </form>
         </div>)
 }

@@ -17,16 +17,16 @@ const BooksService = {
         return axios.delete(`https://localhost:44324/books/${id}`,
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
-    InsertBook : (bookName,supplierID,available,genreID,authorID,publishYear,url ) => {
+    InsertBook : (bookName,supplierID,available,genreID,authorID,publishYear,url ) => { 
         console.log(bookName, available, publishYear, url)
         const book = {
             bookName: bookName,
             authorID : "a11369d9-2a00-4c7c-9340-48688dd8addd",
             genreID: "6374f10a-a74c-48db-b60e-16c623228327",
-            supplierID:  "0c7ac0b5-ff66-4e0e-9f9a-09a4e82eb760",
+            supllierID:  "44546a0c-8be7-4790-a70a-438968d48a15",
             url: url,
-            publishYear : publishYear,
-            available : available
+            publishYear : Number(publishYear),
+            available : Number(available)
         }
         const header = {
             "Content-Type": 'application/json',
@@ -35,6 +35,11 @@ const BooksService = {
         }
         return axios.post("https://localhost:44324/books", book , {
             headers: header
+        }).then((data)=>{
+            console.log(data + " data")
+        })
+        .catch((error) =>{
+            console.log("error" + error)
         })
     },
     updateBook: (bookID, bookName, available ,publishYear,url ) => {

@@ -1,46 +1,64 @@
-import { Button, Modal } from 'react-bootstrap';
-import React, { Component } from 'react'
-export default class InsertDialog extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showDeleteDialog: false,
-            showUpdateDialog: false,
-            showAddDialog: false,
-            id: 0,
-            counter: 1,
-            genreName: ''
-        };
+import React from 'react'
+import validate from './ValidateInfo'
+import { useState } from 'react'
+import { Modal, Button } from 'react-bootstrap';
+
+const InsertDialog = (props) => {
+    const [errors, setErrors] = useState({})
+    const [values, setValues] = useState({
+        genreName: '',
+    })
+ 
+    const handleChange = e => {
+        const { name, value } = e.target
+        setValues({
+            ...values,
+            [name]: value
+        })
     }
-    onChange(e) {
-        this.setState({ genreName: e.target.value })
+
+    const handleSubmit = e => {  
+        e.preventDefault();
+        if (values.genreName === "" || values.genreName === undefined) {
+            setErrors(validate(values))
+        }
+        else { 
+            props.insertGenre(values.genreName)
+            setErrors({})
+            setValues({values: ''})
+        }
     }
-    render() {
-        return (
-            <div>
-                <Modal
-                    show={this.props.showAddDialog}
-                    backdrop="static"
-                    keyboard={false} >
-                    <Modal.Header >
-                        <Modal.Title>Add new genre</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <input
-                            type="text"
-                            placeholder =  "Genre name"
-                            name={this.props.genreName}
-                            className="inputFiled"
-                            defaultValue={this.props.genreName}
-                            onChange={this.onChange.bind(this)}
-                        />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.props.closeAddDialog}> Close  </Button>
-                        <Button onClick={() => this.props.insertGenre(this.state.genreName)} variant="primary">Insert</Button>
-                    </Modal.Footer>
-                </Modal>
-            </div>
-        )
+
+    const handleClose = () => { 
+        props.closeAddDialog()
+        setErrors({})
+        setValues({ values: '' })
     }
+    return (
+        <Modal
+            show={props.showAddDialog}
+            backdrop="static"
+            keyboard={false} >
+            <Modal.Header >
+                <Modal.Title>Add new genre</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <input
+                    type="text"
+                    placeholder="Genre name"
+                    name="genreName"
+                    className="inputFiled"
+                    defaultValue={values.genreName}
+                    onChange={handleChange}   />
+                    {<p>{errors.genreName}</p>}
+            </Modal.Body>
+            <Modal.Footer >
+                <Button variant="secondary" onClick={handleClose}> Close  </Button>
+                <Button onClick={handleSubmit} variant="primary">Insert</Button>
+            </Modal.Footer>
+        </Modal>
+    )
 }
+
+export default InsertDialog
+

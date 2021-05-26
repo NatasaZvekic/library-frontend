@@ -31,11 +31,11 @@ const DelivererService = {
             });
             
     },
-    insertDeliverer: ( companyName, address, contact) => { 
+    insertDeliverer: ( companyName, address, contact) => {  console.log("in service " + companyName + " " + address + " " + contact)
         const newDeliverer = {
-            deliveryCompanyName : companyName,
-            deliveryAddress: address,
-            deliveryContant: contact
+            deliveryCompanyName: companyName,
+            deliveryContant: Number(contact),
+            deliveryAddress: address
         }
         const header = {
             "Content-Type": 'application/json',

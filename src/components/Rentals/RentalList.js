@@ -15,7 +15,9 @@ export default class RentalList extends Component {
             employee: '',
             deliverer: '',
             showCompleted: 'none',
-            showUnCompleted: 'block'
+            showUnCompleted: 'block',
+            bookID: '',
+            userID :''
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
         this.deleteRental = this.deleteRental.bind(this)
@@ -32,6 +34,8 @@ export default class RentalList extends Component {
         this.setState({ employee: rental.employeeID })
         this.setState({ deliverer: rental.deliverID })
         this.setState({ id: rental.rentalID })
+        this.setState({ bookID: rental.bookID })
+        this.setState({ userID: rental.userID })
         this.setState({ showUpdateDialog: true })
     }
     openAddDialog() {
@@ -51,19 +55,6 @@ export default class RentalList extends Component {
         this.props.deleteRental(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
-    // updateGenre = (genreName) => {
-    //     this.props.updateGenre(genreName, this.state.id)
-    //     this.setState({ showUpdateDialog: false })
-    //     this.setState({ genreName: '' })
-    // }
-    // insertGenre = (genreName1) => {
-    //     this.props.insertGenre(genreName1)
-    //     this.setState({ showAddDialog: false })
-    //     this.setState({ genreName: '' })
-    // }
-    // onChange(e) {
-    //     this.setState({ genreName: e.target.value })
-    // }
 
     showCompleted = () => {
         this.setState({ showCompleted: 'block' })
@@ -73,8 +64,9 @@ export default class RentalList extends Component {
         this.setState({ showCompleted: 'none' })
         this.setState({ showUnCompleted: 'block' })
     }
-    updateRental = ( employeeID, deliveryID) => {
-        this.props.updateRental(this.state.id, employeeID, deliveryID)
+    updateRental = (employeeID, deliveryID) => {
+        this.props.updateRental(this.state.id, employeeID, deliveryID, this.state.bookID, this.state.userID)
+        this.setState({showUpdateDialog : false})
     }
 
     render() {
@@ -96,19 +88,7 @@ export default class RentalList extends Component {
                     openDialogForUpdate={this.openDialogForUpdate}
                     openAddDialog={this.openAddDialog}
                     completedRentals={this.props.uncompletedRentals}
-                  
-                    
                 />
-                {/* <rentalList
-                    insertGenre={this.insertGenre}
-                    genreName={this.state.genreName}
-                    showAddDialog={this.state.showAddDialog}
-                    closeAddDialog={this.closeAddDialog} />
-                <UpdateDialog
-                    updateGenre={this.updateGenre}
-                    genreName={this.state.genreName}
-                    showUpdateDialog={this.state.showUpdateDialog}
-                    closeUpdateDialog={this.closeUpdateDialog} /> */}
                 <UpdateDialog
                     closeUpdateDialog={this.closeUpdateDialog}
                     showUpdateDialog={this.state.showUpdateDialog}
@@ -120,9 +100,6 @@ export default class RentalList extends Component {
                     deleteRental={this.deleteRental}
                     closeDeleteDialog={this.closeDeleteDialog}
                     showDeleteDialog={this.state.showDeleteDialog} />
-                {/* <InsertDialog
-                    usersList={this.props.usersList}
-                    /> */}
             </div>
         )
     }

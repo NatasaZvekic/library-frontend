@@ -39,8 +39,8 @@ const EmployeeService ={
         const newEmployee = {
             employeeName : name,
             employeeLastName : lastname,
-            employeeContact : contact,
-            ssn : ssn,
+            employeeContact : Number(contact),
+            ssn : Number(ssn),
             email : email,
             password: password,
             role : role

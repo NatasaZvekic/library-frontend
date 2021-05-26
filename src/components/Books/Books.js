@@ -41,6 +41,7 @@ const Books = (props) => {
     const insertBook = (bookName, supplierID, available, genreID, authorID, publishYear, url) => {
         props.InsertBook(bookName, supplierID, available, genreID, authorID, publishYear, url)
         closeInsertDialog()
+        setDialogForInsertBook(false)
     }
     return (
         <body>

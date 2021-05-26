@@ -31,7 +31,7 @@ const AuthorService = {
         const newAuthor = {
             authorName : name,
             authorLastName: lastname,
-            yearOfBirth: year
+            yearOfBirth: Number(year)
         }
         const header = {
             "Content-Type": 'application/json',

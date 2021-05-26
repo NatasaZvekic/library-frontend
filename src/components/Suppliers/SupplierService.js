@@ -8,7 +8,7 @@ const SupplierService = {
     insertSupplier: (name, contact, address) => {
         const newSupplier = {
             companyName: name,
-            supplierContant: contact,
+            supplierContant: Number(contact),
             supplierAddress: address
         }
         const header = {

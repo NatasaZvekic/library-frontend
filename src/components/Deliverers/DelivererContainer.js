@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NewHead from "../Header/Header";
 import DelivererList from "./DelivererList";
 import DelivererService from "./DelivererService";
+import background from '../assets/photo/unnamed.jpg'
 
 function DelivererContainer() {
     const [deliverers, setDeliverers] = useState([]);
@@ -20,11 +21,11 @@ function DelivererContainer() {
         DelivererService.updateDeliverer(id, companyName, address, contact)
     }
 
-    const insertDeliverer = (companyName, address, contact) => {
+    const insertDeliverer = (companyName, address, contact) => { 
         DelivererService.insertDeliverer(companyName, address, contact)
     }
     return (
-        <div>
+        <div className="login" style={{backgroundImage : `url(${background})`}}>
             <NewHead/>
             <DelivererList
              deliverersList={deliverers}

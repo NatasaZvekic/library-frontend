@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import NewHead from '../Header/Header'
 import RentalList from './RentalList';
 import RentalService from './RentalService';
-import EmployeeService from  '../Employees/EmployeeService'
+import EmployeeService from '../Employees/EmployeeService'
 import DeliveryService from '../Deliverers/DelivererService'
+import background from '../assets/photo/unnamed.jpg'
 
 function RentalContainer() {
     const [completedRentals, setCompletedRentals] = useState([]);
@@ -18,41 +19,34 @@ function RentalContainer() {
         RentalService.getAllUncompletedRentals().then((data) => {
             setUncompletedRentals(data.data);
         })
-        EmployeeService.getAllEmployees().then((data)=>{
+        EmployeeService.getAllEmployees().then((data) => {
             setEmployees(data.data)
         })
-        DeliveryService.getAllDeliverers().then((data)=>{
+        DeliveryService.getAllDeliverers().then((data) => {
             setDeliverers(data.data)
         })
-        
+
     })
 
     const deleteRental = (id) => {
         RentalService.deleteRental(id)
     }
 
-    const updateRental = (id, deliveryID, employeeID) => {
-        RentalService.updateRental(id, deliveryID, employeeID)
+    const updateRental = (id, deliveryID, employeeID, bookID, userID) => {
+        RentalService.updateRental(id, deliveryID, employeeID, bookID, userID)
+
     }
 
- 
-    // const updateGenre = (genreName, genreID) =>{
-    //    GenreService.updateGenre(genreName, genreID)
-    // }
-    // const insertGenre = (genreName) => {
-    //     GenreService.insertGenre(genreName)
-    // }
-
     return (
-        <div className="login">
+        <div className="login" style={{ backgroundImage: `url(${background})` }}>
             <NewHead />
-            <RentalList 
-            completedRentals={completedRentals}
-            uncompletedRentals={uncompletedRentals}
-            deleteRental = {deleteRental}
-            employeeList = {employees}
-            deliveryList = {deliverers}
-            updateRental = {updateRental}
+            <RentalList
+                completedRentals={completedRentals}
+                uncompletedRentals={uncompletedRentals}
+                deleteRental={deleteRental}
+                employeeList={employees}
+                deliveryList={deliverers}
+                updateRental={updateRental}
             />
         </div>
     )

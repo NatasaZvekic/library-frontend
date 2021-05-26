@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import GenreService from './GenreService'
 import GenreList from './GenreList'
 import NewHead from '../Header/Header'
+import background from '../assets/photo/unnamed.jpg'
 
 function GenresContainer() {
     const [genres, setGenres] = useState([]);
@@ -9,7 +10,7 @@ function GenresContainer() {
     useEffect(() => {
         GenreService.getAllGenres().then((data) => {
             setGenres(data.data);
-            console.log("g " + data.data.genreName)
+            
         })
     })
 
@@ -24,7 +25,7 @@ function GenresContainer() {
     }
 
     return (
-        <div className="login">
+        <div className="login" style={{backgroundImage : `url(${background})`}}>
             <NewHead />
             <GenreList genreList={genres} deleteGenre={deleteGenre} updateGenre={updateGenre} insertGenre={insertGenre}/>
         </div>

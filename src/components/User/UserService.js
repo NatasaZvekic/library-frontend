@@ -34,7 +34,7 @@ const UserService = {
         const newUser = {
             userName: name,
             userLastName: lastname,
-            userContact: contact,
+            userContact: Number(contact),
             userAddress: address,
             password: password,
             email: email,

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NewHead from "../Header/Header";
 import AuthorList from "./AuthorList";
 import AuthorService from "./AuthorService";
+import background from '../assets/photo/unnamed.jpg'
 
 function AuthorContainer() {
     const [authors, setAuthors] = useState([]);
@@ -25,7 +26,7 @@ function AuthorContainer() {
         AuthorService.insertAuthor(name, lastname, year)
     }
     return (
-        <div>
+        <div className="login" style={{backgroundImage : `url(${background})`, height: '100%'}}>
             <NewHead />
             <AuthorList
                 authorsList={authors}

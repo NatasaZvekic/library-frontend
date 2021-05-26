@@ -17,7 +17,7 @@ const LoginContainer = () => {
                 localStorage.setItem("role", data.data.role.role)
                 localStorage.setItem("userID", data.data.role.userID)
                 localStorage.setItem("userName", data.data.role.userName + " " + data.data.role.userLastName)
-                //  console.log(data.data.role + " role") 
+                 console.log(data.data.role.role + " role") 
                 localStorage.setItem("status", data.status)
                 return data.status
             }).catch(function (error) {
@@ -29,7 +29,7 @@ const LoginContainer = () => {
     }
 
     return (
-        <div className="login" style={{backgroundImage : `url(${background})`}}>
+        <div className="login" style={{ backgroundImage: `url(${background})` }}>
             <NewHead />
             <FormSignUp login={Login} />
 

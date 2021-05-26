@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import NewHead from '../Header/Header'
 import SupplierService from './SupplierService';
 import SupplierList from './SupplierList'
+import background from '../assets/photo/unnamed.jpg'
 
 function SupplierContainer() {
     const [suppliers, setSuppliers] = useState([]);
@@ -25,7 +26,7 @@ function SupplierContainer() {
     }
 
     return (
-        <div>
+        <div className="login" style={{ backgroundImage: `url(${background})` }}>
             <NewHead />
             <SupplierList supplierList={suppliers}
                 insertSupplier={insertSupplier} 

@@ -57,7 +57,7 @@ export default class DelivererList extends Component {
         this.setState({ showUpdateDialog: false })
         this.clearAllFields()
     }
-    insertDeliverer = (companyName, address, contact) => {
+    insertDeliverer = (companyName, address, contact) => { 
         this.props.insertDeliverer(companyName, address, contact)
         this.closeAddDialog()
     }

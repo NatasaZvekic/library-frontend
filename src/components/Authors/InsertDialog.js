@@ -1,34 +1,49 @@
-import React, { Component } from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import React from 'react'
+import validate from './ValidateInfo'
+import { useState } from 'react'
+import { Modal, Button } from 'react-bootstrap';
 
-export default class InsertDialog extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showDeleteDialog: false,
-            showUpdateDialog: false,
-            showAddDialog: false,
-            id: 0,
-            name: '',
-            lastname: '',
-            yearOfBirth: ''
-        };
+const InsertDialog = (props) => {
+    const [errors, setErrors] = useState({})
+    const [values, setValues] = useState({
+        name: '',
+        lastname: '',
+        yearOfBirth: ''
+    })
+
+    const handleChange = e => {
+        const { name, value } = e.target
+        setValues({
+            ...values,
+            [name]: value
+        })
     }
-    onChange(e) {
-        if (e.target.name == "yearOfBirth") {
-            this.setState({ [e.target.name]: +e.target.value })
-        } else {
-            this.setState({ [e.target.name]: e.target.value })
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        if (values.name === "" || values.lastname  === "" || values.yearOfBirth === "" ) {
+            setErrors(validate(values))
+        }
+        else {
+            props.insertAuthor(values.name, values.lastname, values.yearOfBirth)
+            setErrors("")
+            setValues({ values: '' })
         }
     }
-    render() {
-        return (
-            <Modal
-            show={this.props.showAddDialog}
+
+    const handleClose = () =>{ 
+        props.closeAddDialog()
+        setErrors("")
+        setValues({ values: '' })
+    }
+
+    return (
+        <Modal
+            show={props.showAddDialog}
             backdrop="static"
             keyboard={false} >
             <Modal.Header >
-                <Modal.Title>Add new author</Modal.Title>
+                <Modal.Title>Add new genre</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <input
@@ -36,31 +51,36 @@ export default class InsertDialog extends Component {
                     name="name"
                     className="inputFiled"
                     placeholder="Author name"
-                    defaultValue={this.props.name}
-                    onChange={this.onChange.bind(this)}
+                    defaultValue={values.name}
+                    onChange={handleChange}
                 />
+                {<p>{errors.name}</p>}
                 <input
                     type="text"
                     name="lastname"
                     className="inputFiled"
                     placeholder="Author lastname"
-                    defaultValue={this.props.lastname}
-                    onChange={this.onChange.bind(this)}
+                    defaultValue={values.lastname}
+                    onChange={handleChange}
                 />
+                {<p>{errors.lastname}</p>}
                 <input
                     type="number"
                     name="yearOfBirth"
                     className="inputFiled"
                     placeholder="Author year of birth"
-                    defaultValue={this.props.yearOfBirth}
-                    onChange={this.onChange.bind(this)}
+                    defaultValue={values.yearOfBirth}
+                    onChange={handleChange}
                 />
+                {<p>{errors.yearOfBirth}</p>}
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={this.props.closeAddDialog}> Close  </Button>
-                <Button onClick={() => this.props.insertAuthor(this.state.name, this.state.lastname, this.state.yearOfBirth)} variant="primary">Insert</Button>
+            <Modal.Footer >
+                <Button variant="secondary" onClick={handleClose}> Close  </Button>
+                <Button onClick={handleSubmit} variant="primary">Insert</Button>
             </Modal.Footer>
         </Modal>
-        )
-    }
+    )
 }
+
+export default InsertDialog
+

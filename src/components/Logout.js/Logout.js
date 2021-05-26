@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { Redirect } from 'react-router';
+import background from '../assets/photo/unnamed.jpg'
+import Header from '../Header/Header';
 
 export default class Logout extends Component {
 
@@ -18,7 +20,7 @@ export default class Logout extends Component {
         localStorage.removeItem("userID")
         localStorage.removeItem("userName")
         localStorage.setItem("logged", false);
-      
+
     }
     cancel() {
         this.setState({ loggedOut: true })
@@ -30,20 +32,23 @@ export default class Logout extends Component {
             return <Redirect to="/home" />
         }
         return (
-            <Modal.Dialog>
-                <Modal.Header closeButton>
-                    <Modal.Title>Log out</Modal.Title>
-                </Modal.Header>
+            <div className="login" style={{ backgroundImage: `url(${background})` }}>
+                <Header/>
+                <Modal.Dialog>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Log out</Modal.Title>
+                    </Modal.Header>
 
-                <Modal.Body>
-                    <p>Are you sure you want to logout?</p>
-                </Modal.Body>
+                    <Modal.Body>
+                        <p>Are you sure you want to logout?</p>
+                    </Modal.Body>
 
-                <Modal.Footer>
-                    <Button onClick={this.cancel.bind(this)} variant="secondary">Close</Button>
-                    <Button onClick={this.logOut.bind(this)} variant="primary">Logout</Button>
-                </Modal.Footer>
-            </Modal.Dialog>
+                    <Modal.Footer>
+                        <Button onClick={this.cancel.bind(this)} variant="secondary">Close</Button>
+                        <Button onClick={this.logOut.bind(this)} variant="primary">Logout</Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </div>
         )
     }
 }
