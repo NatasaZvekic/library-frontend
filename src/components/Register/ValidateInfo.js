@@ -14,13 +14,11 @@ export default function ValidateInfo(values) {
     if (!values.contact) {
         errors.contact = "Contact required!"
 
-    } if (!values.role) {
-        errors.role = "Role required!"
     }
-
-    if (values.password.length < 10) {
-        console.log("leng " + values.password.length)
+    if(values.password.length !== undefined){
+    if (values.password.length < 10) { console.log("pass " + values.password)
         errors.password = "Password must be at least 8 characters long!"
+    }
 
     }
     if (!validator.isEmail(values.email)) {

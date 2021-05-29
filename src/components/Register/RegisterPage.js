@@ -4,8 +4,13 @@ import { useState } from 'react'
 import { useHistory } from "react-router"
 import validator from 'validator'
 
+import { Modal } from 'react-bootstrap';
+import LoginContainer from '../LogIn/LoginContainer'
+import LoginService from '../LogIn/LoginService'
 const RegisterPage = (props) => {
     const [errors, setErrors] = useState({})
+    const [opened, setOpened] = useState(false)
+    const handleShow = () => setOpened(false);
     let history = useHistory()
     const [values, setValues] = useState({
         name: '',
@@ -24,29 +29,63 @@ const RegisterPage = (props) => {
         })
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         if (values.name === "" || values.lastname === "" || values.contact === "" || values.email === "" ||
-            values.address === "" ||  values.password === "" ||
+            values.address === "" || values.password === "" ||
             values.name === undefined || values.contact === undefined || values.email === undefined ||
-            values.address === undefined ||  values.password === undefined ||
-            values.lastname === undefined || values.password.length < 10  || !validator.isEmail(values.email)) {
+            values.address === undefined || values.password === undefined ||
+            values.lastname === undefined || values.password.length < 10 || !validator.isEmail(values.email)) {
             setErrors(validate(values))
         }
-        else {console.log("in page")
-           const res = props.insertUser(values.name, values.lastname, values.contact, values.address,
-                values.email,values.password)
+        else {
+            const res = await props.insertUser(values.name, values.lastname, values.contact, values.address,
+                values.email, values.password).then(
+                    console.log("done")
+                )
             setErrors("")
-            setValues({ values: '' })
+            console.log("finised..")
+           
             if (localStorage.getItem("status") === "200") {
+                console.log("200")
+                await LoginService.LoginUser(values.email, values.password)
+                .then((data) => {
+                    console.log(" i do log"  + " " + values.password)
+                    localStorage.setItem("jwtToken", data.data.token)
+                    console.log(data.status + " data");
+                    localStorage.setItem("role", data.data.role.role)
+                    localStorage.setItem("userID", data.data.role.userID)
+                    localStorage.setItem("userName", data.data.role.userName + " " + data.data.role.userLastName)
+                     console.log(data.data.role.role + " role") 
+                    localStorage.setItem("status", data.status)
+                    return data.status
+                }).catch(function (error) {
+                    console.log("error " + error)
+                    localStorage.setItem("status", 400)
+    
+                    return "error"
+                })
+
                 history.push("/home")
+                setValues({ values: '' })
+            }
+            else if(localStorage.getItem("status") === "400") { console.log("not 200")
+                setOpened(true);
+                setTimeout(function () {
+                    setOpened(false)
+                }, 5000);
+                
             }
         }
     }
 
-    return (
+    return (<div>
+        <Modal show={opened} >
+            <Modal.Header style={{ background: 'firebrick', color: 'white' }}>Given email alredy exists. Please try again.</Modal.Header>
+        </Modal>
+
         <div className="registerBox" >
-           <h1 class="loginTitle">REGISTER</h1>
+            <h1 class="loginTitle">REGISTER</h1>
             <input
                 type="text"
                 name="name"
@@ -101,8 +140,9 @@ const RegisterPage = (props) => {
                 onChange={handleChange}
             />
             {<p>{errors.password}</p>}
-            <button type="submit" onClick={handleSubmit} className="loginBtn">Register</button> <br/>
+            <button type="submit" onClick={handleSubmit} className="loginBtn">Register</button> <br />
         </div>
+    </div>
     )
 }
 

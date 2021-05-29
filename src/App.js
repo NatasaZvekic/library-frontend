@@ -7,26 +7,23 @@ import Logout from './components/Logout.js/Logout';
 import BooksContainer from './components/Books/BooksContainer';
 import LoginContainer from './components/LogIn/LoginContainer';
 import GenresContainer from './components/Genres/GenresContainer'
-import jwtDecode from 'jwt-decode';
 import AuthorContainer from './components/Authors/AuthorContainer';
 import DelivererContainer from './components/Deliverers/DelivererContainer';
 import EmployeeContainer from './components/Employees/EmployeeContainer';
 import SupplierContainer from './components/Suppliers/SupplierContainer';
 import UserContainer from './components/User/UserContainer';
 import RentalContainer from './components/Rentals/RentalContainer';
-import RegisterPage from './components/Register/RegisterPage';
 import RegisterContainer from './components/Register/RegisterContainer';
 import MyRentalsContainer from './components/MyRentals/MyRentalsContainer';
 
 function App() {
-  return (
+  return ( 
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/home" exact component={Home} />
         <Route path="/galery" exact component={Galery} />
         <Route path="/register" exact component={RegisterContainer} />
-
         <Route path="/myrentals" exact component= {localStorage.getItem("role") === "user" ? MyRentalsContainer : Home }/>
 
         <Route path="/about" exact component={AboutUs} />

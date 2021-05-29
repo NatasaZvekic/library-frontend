@@ -204,7 +204,15 @@ hr {
   margin-bottom: 20px;
   background: white;
 }
+.title2{
+  font-size: 30px;
+  color: black;
+  margin-bottom: 20px;
+  font-family: 'Pacifico', cursive;
+  font-style: italic;
 
+
+}
 .text{
   color:black;
   font-size: 16px;
@@ -488,7 +496,7 @@ justify-content: end;
 .NavbarItems1{
   height: 48px;
   width: 100%;
-  background-color:  #9999ff;
+  background-color:  black;
   color:white;
 
   display: flex;
@@ -520,7 +528,7 @@ justify-content: end;
 .nav-links1.active{
   float:left;
   text-decoration: none;
-  background: #6666ff;
+  background: #979696;
   height: 105%;
   padding:12px;
   color:white;
@@ -528,7 +536,7 @@ justify-content: end;
 .nav-links1r.active{
   
   text-decoration: none;
-  background: #6666ff;
+  background: #ccc;
  
 }
 .nav-links1r{
@@ -539,12 +547,12 @@ justify-content: end;
   color:white;
 }
 .nav-links1r:hover{
-  background-color: #6666ff;
+  background-color: #ccc;
   color:white;
   text-decoration: none;
 }
 .nav-links1:hover{
-  background-color: #6666ff;
+  background-color: #ccc;
   color:white;
   text-decoration: none;
 }
@@ -573,7 +581,7 @@ justify-content: end;
   .nav-menu1.active{
   margin-top: -2px;
     left:0;
- background: #9999ff;
+ background: #979696;
     opacity: 1;
     transition: all 0.5s easy;
     z-index: 2;

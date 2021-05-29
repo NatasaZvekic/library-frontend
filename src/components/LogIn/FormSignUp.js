@@ -1,7 +1,7 @@
 import React from 'react'
 import validate from './ValidateInfo'
 import { useState } from 'react'
-import { useHistory } from "react-router"
+import { Redirect, useHistory } from "react-router"
 import {  Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -23,12 +23,13 @@ const FormSignUp = (props) => {
             [name]: value
         })
     }
-    
+ 
     const fetchUserEmail = async () => {
         const response = await props.login(values.email, values.password)
         console.log("res " + localStorage.getItem("status"))
         if (localStorage.getItem("status") === "200") {
-            history.push("/home")
+         
+           history.push("/home")
         }
         else {
             console.log("open")
