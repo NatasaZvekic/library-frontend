@@ -2,38 +2,39 @@ import axios from 'axios'
 const RentalService = {
 
     getAllCompletedRentals: () => {
-        return axios.get("https://localhost:44324/rentals?completed=true",
+        return axios.get("http://localhost:44324/rentals?completed=true",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
     getAllUncompletedRentals: () => {
-        return axios.get("https://localhost:44324/rentals",
+        return axios.get("http://localhost:44324/rentals",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
     getRentalByUserID : () => {
-        return axios.get(`https://localhost:44324/rentals/${localStorage.getItem("userID")}`,
+        return axios.get(`http://localhost:44324/rentals/${localStorage.getItem("userID")}`,
         { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
     deleteRental: (id) => {
-        return axios.delete(`https://localhost:44324/rentals/${id}`,
+        return axios.delete(`http://localhost:44324/rentals/${id}`,
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
-    updateRental : (rentalID, deliveryID, employeeID, bookID, userID) => {
+    updateRental : (rentalID, deliveryID, employeeID, bookID, userID) => { console.log("im in update " + 
+    rentalID + " bookID " + bookID + " user ID " + userID)
         const rental = {
-            deliveryID: "1e557702-79b4-459a-a5e7-23ce94977e02",
-            employeeID : "dde4b9b8-8a37-456d-be13-682dc8fa77b5",
-            bookID : bookID,
-            userID : userID
+            bookID:  bookID,
+            userID : userID,
+             employeeID: "867D7C45-9E41-4CDB-8853-F6403E1844C8",
+             deliveryID: "E69F696D-A5EB-4502-85CB-52B1AC548DE5"
         }
         const header = {
             "Content-Type": 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`https://localhost:44324/rentals/${rentalID}`, rental , {
+        return axios.put(`http://localhost:44324/rentals/${rentalID}`, rental , {
             headers: header
         })
 

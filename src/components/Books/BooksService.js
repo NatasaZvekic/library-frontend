@@ -2,7 +2,7 @@ import axios from 'axios'
 const BooksService = {
 
     GetAllBooks: (pageN, bookName) => {
-        return axios.get(`https://localhost:44324/books?bookName=${bookName === null ? '' : bookName}&pageNumber=${pageN === null ? 1 : pageN}`)
+        return axios.get(`http://localhost:44324/books?bookName=${bookName === null ? '' : bookName}&pageNumber=${pageN === null ? 1 : pageN}`)
     },
 
     AddNewBook: () => {
@@ -14,26 +14,28 @@ const BooksService = {
     },
 
     DeleteBook: (id) => {
-        return axios.delete(`https://localhost:44324/books/${id}`,
+        return axios.delete(`http://localhost:44324/books/${id}`,
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
-    InsertBook : (bookName,supplierID,available,genreID,authorID,publishYear,url ) => { 
-        console.log(bookName, available, publishYear, url)
+    InsertBook : (bookName,supplierID,available,genreID,authorID,publishYear,url, price ) => { 
+        console.log(price +  " price")
         const book = {
             bookName: bookName,
             authorID : "a11369d9-2a00-4c7c-9340-48688dd8addd",
             genreID: "6374f10a-a74c-48db-b60e-16c623228327",
-            supllierID:  "44546a0c-8be7-4790-a70a-438968d48a15",
+            supllierID: "0c7ac0b5-ff66-4e0e-9f9a-09a4e82eb760",
             url: url,
             publishYear : Number(publishYear),
-            available : Number(available)
+            available : Number(available),
+            price : Number(price)
+
         }
         const header = {
             "Content-Type": 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("https://localhost:44324/books", book , {
+        return axios.post("http://localhost:44324/books", book , {
             headers: header
         }).then((data)=>{
             console.log(data + " data")
@@ -42,8 +44,8 @@ const BooksService = {
             console.log("error" + error)
         })
     },
-    updateBook: (bookID, bookName, available ,publishYear,url ) => {
-        console.log("update " +  bookName, available ,publishYear,url)
+    updateBook: (bookID, bookName, available ,publishYear,url, price ) => {
+        console.log("update " +  bookName, available ,publishYear,url, price)
         const newBook = {
             bookName: bookName,
             authorID : "a11369d9-2a00-4c7c-9340-48688dd8addd",
@@ -51,14 +53,16 @@ const BooksService = {
             supllierID: "0c7ac0b5-ff66-4e0e-9f9a-09a4e82eb760",
             url: url,
             publishYear : publishYear,
-            available : available
+            available : available,
+            price : price
+        
         }
         const header = {
             "Content-Type": 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`https://localhost:44324/books/${bookID}`, newBook , {
+        return axios.put(`http://localhost:44324/books/${bookID}`, newBook , {
             headers: header
         })
     },
@@ -67,15 +71,15 @@ const BooksService = {
         const rental = {
             bookID: bookID,
             userID : localStorage.getItem("userID"),
-            employeeID: "747500c8-47cf-4d99-afba-5befacd64485",
-            deliveryID: "e69f696d-a5eb-4502-85cb-52b1ac548de1"
+            employeeID: "867D7C45-9E41-4CDB-8853-F6403E1844C8",
+            deliveryID: "E69F696D-A5EB-4502-85CB-52B1AC548DE1"
         }
         const header = {
             "Content-Type": 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("https://localhost:44324/rentals", rental , {
+        return axios.post("http://localhost:44324/rentals", rental , {
             headers: header
         })
 

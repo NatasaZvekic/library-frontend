@@ -7,7 +7,9 @@ export default class DeleteDialog extends Component {
             <Modal
                 show={this.props.showDeleteDialog}
                 backdrop="static"
-                keyboard={false} >
+                show-close="false"
+                data-keyboard="false"
+                >
                 <Modal.Header closeButton>
                     <Modal.Title>Delete resource</Modal.Title>
                 </Modal.Header>
@@ -16,7 +18,7 @@ export default class DeleteDialog extends Component {
                     </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeDeleteDialog}> Close</Button>
-                    <Button onClick={this.props.DeleteBook} variant="primary">Delete</Button>
+                    <Button onClick={this.props.DeleteBook}    variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Delete</Button>
                 </Modal.Footer>
             </Modal>
         )

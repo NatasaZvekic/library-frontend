@@ -20,7 +20,7 @@ const RegisterService = {
             "Access-Control-Allow-Origin": "*",
 
         }
-        return axios.post("https://localhost:44324/users", newUser, {
+        return axios.post("http://localhost:44324/users", newUser, {
             headers: header
     
         })

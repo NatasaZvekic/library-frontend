@@ -18,7 +18,7 @@ export default class DeleteDialog extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.props.closeDeleteDialog}> Close</Button>
-                        <Button onClick={this.props.deleteUser} variant="primary">Delete</Button>
+                        <Button onClick={this.props.deleteUser} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Delete</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

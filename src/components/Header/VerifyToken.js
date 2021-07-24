@@ -3,7 +3,7 @@ import axios from 'axios'
 const VerifyToken = {
 
     verifyToken(){
-        return axios.get("https://localhost:44324/verifyToken",
+        return axios.get("http://localhost:44324/verifyToken",
         { headers: { "token": localStorage.getItem("jwtToken") } })
     
     }

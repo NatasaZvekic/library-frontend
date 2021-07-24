@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NewHead from "../Header/Header";
+import NewHead from "../Header/HeaderTwo";
 import DelivererList from "./DelivererList";
 import DelivererService from "./DelivererService";
 import background from '../assets/photo/unnamed.jpg'
@@ -25,7 +25,7 @@ function DelivererContainer() {
         DelivererService.insertDeliverer(companyName, address, contact)
     }
     return (
-        <div className="login" style={{backgroundImage : `url(${background})`}}>
+        <div className="login" style={{ backgroundColor: '#f2e6ff' }}>
             <NewHead/>
             <DelivererList
              deliverersList={deliverers}

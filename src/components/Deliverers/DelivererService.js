@@ -2,12 +2,12 @@ import axios from 'axios'
 const DelivererService = {
 
     getAllDeliverers: () => {
-        return axios.get("https://localhost:44324/deliverers",
+        return axios.get("http://localhost:44324/deliverers",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
     deleteDeliverer: (id) => {
-        return axios.delete(`https://localhost:44324/deliverers/${id}`,
+        return axios.delete(`http://localhost:44324/deliverers/${id}`,
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
@@ -22,7 +22,7 @@ const DelivererService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`https://localhost:44324/deliverers/${id}`, newDeliverer , {
+        return axios.put(`http://localhost:44324/deliverers/${id}`, newDeliverer , {
                 headers: header
             }).then(response => console.log("resp " + response.data))
             .catch(error => {
@@ -42,7 +42,7 @@ const DelivererService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("https://localhost:44324/deliverers", newDeliverer , {
+        return axios.post("http://localhost:44324/deliverers", newDeliverer , {
                 headers: header
             }).then(response => console.log("resp " + response.data))
             .catch(error => {

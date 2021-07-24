@@ -2,12 +2,12 @@ import axios from 'axios'
 const UserService = {
 
     getAllUsers: () => {
-        return axios.get("https://localhost:44324/users",
+        return axios.get("http://localhost:44324/users",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
     deleteUser: (id) => {
-        return axios.delete(`https://localhost:44324/users/${id}`,
+        return axios.delete(`http://localhost:44324/users/${id}`,
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
@@ -25,7 +25,7 @@ const UserService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`https://localhost:44324/users/${id}`, newUser, {
+        return axios.put(`http://localhost:44324/users/${id}`, newUser, {
             headers: header
         })
 
@@ -45,7 +45,7 @@ const UserService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("https://localhost:44324/users", newUser, {
+        return axios.post("http://localhost:44324/users", newUser, {
             headers: header
         })
 

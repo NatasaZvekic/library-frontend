@@ -21,7 +21,7 @@ const InsertDialog = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (values.name === "" || values.lastname  === "" || values.yearOfBirth === "" ) {
+        if (values.name === "" || values.lastname === "" || values.yearOfBirth === "") {
             setErrors(validate(values))
         }
         else {
@@ -31,7 +31,7 @@ const InsertDialog = (props) => {
         }
     }
 
-    const handleClose = () =>{ 
+    const handleClose = () => {
         props.closeAddDialog()
         setErrors("")
         setValues({ values: '' })
@@ -46,37 +46,44 @@ const InsertDialog = (props) => {
                 <Modal.Title>Add new genre</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <input
-                    type="text"
-                    name="name"
-                    className="inputFiled"
-                    placeholder="Author name"
-                    defaultValue={values.name}
-                    onChange={handleChange}
-                />
-                {<p>{errors.name}</p>}
-                <input
-                    type="text"
-                    name="lastname"
-                    className="inputFiled"
-                    placeholder="Author lastname"
-                    defaultValue={values.lastname}
-                    onChange={handleChange}
-                />
-                {<p>{errors.lastname}</p>}
-                <input
-                    type="number"
-                    name="yearOfBirth"
-                    className="inputFiled"
-                    placeholder="Author year of birth"
-                    defaultValue={values.yearOfBirth}
-                    onChange={handleChange}
-                />
-                {<p>{errors.yearOfBirth}</p>}
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="name"
+                        className="form-control"
+                        placeholder="Author name"
+                        defaultValue={values.name}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.name}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="lastname"
+                        placeholder="Author lastname"
+                        defaultValue={values.lastname}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.lastname}</p>}
+
+                </div>
+                <div class="form-group">
+                    <input
+                        type="number"
+                        name="yearOfBirth"
+                        class="form-control"
+                        placeholder="Author year of birth"
+                        defaultValue={values.yearOfBirth}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.yearOfBirth}</p>}
+                </div>
             </Modal.Body>
             <Modal.Footer >
                 <Button variant="secondary" onClick={handleClose}> Close  </Button>
-                <Button onClick={handleSubmit} variant="primary">Insert</Button>
+                <Button onClick={handleSubmit} variant="secondary" style={{backgroundColor: '#f0ad4e', borderColor: '#f0ad4e'}}>Insert</Button>
             </Modal.Footer>
         </Modal>
     )

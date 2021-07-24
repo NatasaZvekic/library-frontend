@@ -35,27 +35,33 @@ export default class UpdateDialog extends Component {
                     <Modal.Title>Update resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                <div class="form-group">
                     <input
                         type="text"
                         name="name"
-                        className="inputFiled"
+                        className="form-control"
                         defaultValue={this.props.name}
                         onChange={this.onChange.bind(this)}
                     />
+                    </div>
+                                    <div class="form-group">
                     <input
                         type="text"
                         name="lastname"
-                        className="inputFiled"
+                        className="form-control"
                         defaultValue={this.props.lastname}
                         onChange={this.onChange.bind(this)}
                     />
+                    </div>     
+                               <div class="form-group">
                     <input
                         type="number"
                         name="yearOfBirth"
-                        className="inputFiled"
+                        className="form-control"
                         defaultValue={this.props.yearOfBirth}
                         onChange={this.onChange.bind(this)}
                     />
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeUpdateDialog}> Close </Button>
@@ -66,7 +72,7 @@ export default class UpdateDialog extends Component {
                             this.state.yearOfBirth == 0 ? this.props.yearOfBirth : this.state.yearOfBirth,
                         )
                     }
-                        variant="primary">Update</Button>
+                    variant="secondary" style={{backgroundColor: '#f0ad4e', borderColor: '#f0ad4e'}}>Update</Button>
                 </Modal.Footer>
             </Modal>
         )

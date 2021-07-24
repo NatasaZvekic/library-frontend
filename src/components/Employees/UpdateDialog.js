@@ -36,49 +36,59 @@ export default class UpdateDialog extends Component {
                     <Modal.Title>Update resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <input
-                        type="text"
-                        name="name"
-                        className="inputFiled"
-                        defaultValue={this.props.name}
-                        onChange={this.onChange.bind(this)}
-                    />
-                    <input
-                        type="text"
-                        name="lastname"
-                        className="inputFiled"
-                        defaultValue={this.props.lastname}
-                        onChange={this.onChange.bind(this)}
-                    />
-                    <input
-                        type="number"
-                        name="contact"
-                        className="inputFiled"
-                        defaultValue={this.props.contact}
-                        onChange={this.onChange.bind(this)}
-                    />
-                    <input
-                        type="text"
-                        name="email"
-                        className="inputFiled"
-                        defaultValue={this.props.email}
-                        onChange={this.onChange.bind(this)}
-                    />
-                    <input
-                        type="number"
-                        name="ssn"
-                        className="inputFiled"
-                        defaultValue={this.props.ssn}
-                        onChange={this.onChange.bind(this)}
-                    />
-                    <input
-                        type="text"
-                        name="role"
-                        className="inputFiled"
-                        defaultValue={this.props.role}
-                        onChange={this.onChange.bind(this)}
-                    />
-
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            defaultValue={this.props.name}
+                            onChange={this.onChange.bind(this)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            name="lastname"
+                            class="form-control"
+                            defaultValue={this.props.lastname}
+                            onChange={this.onChange.bind(this)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="number"
+                            name="contact"
+                            class="form-control"
+                            defaultValue={this.props.contact}
+                            onChange={this.onChange.bind(this)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            name="email"
+                            class="form-control"
+                            defaultValue={this.props.email}
+                            onChange={this.onChange.bind(this)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="number"
+                            name="ssn"
+                            class="form-control"
+                            defaultValue={this.props.ssn}
+                            onChange={this.onChange.bind(this)}
+                        /> </div>
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            name="role"
+                            class="form-control"
+                            defaultValue={this.props.role}
+                            onChange={this.onChange.bind(this)}
+                        />
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeUpdateDialog}> Close </Button>
@@ -89,7 +99,7 @@ export default class UpdateDialog extends Component {
                         this.state.email == "" ? this.props.email : this.state.email,
                         this.state.ssn == 0 ? this.props.ssn : this.state.ssn,
                         this.state.contact == 0 ? this.props.contact : this.state.contact,
-                    )} variant="primary">Update</Button>
+                    )} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Update</Button>
                 </Modal.Footer>
             </Modal>
         )

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GenreService from './GenreService'
 import GenreList from './GenreList'
-import NewHead from '../Header/Header'
+import NewHead from '../Header/HeaderTwo'
 import background from '../assets/photo/unnamed.jpg'
 
 function GenresContainer() {
@@ -25,7 +25,7 @@ function GenresContainer() {
     }
 
     return (
-        <div className="login" style={{backgroundImage : `url(${background})`}}>
+        <div className="login" style={{ backgroundColor: '#f2e6ff' }}>
             <NewHead />
             <GenreList genreList={genres} deleteGenre={deleteGenre} updateGenre={updateGenre} insertGenre={insertGenre}/>
         </div>

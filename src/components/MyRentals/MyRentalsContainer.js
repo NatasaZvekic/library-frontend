@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../Header/Header'
+import Header from '../Header/HeaderTwo'
 import background from '../assets/photo/unnamed.jpg'
 import RentalService from '../Rentals/RentalService'
 import MyRentalsList from './MyRentalsList';
@@ -14,7 +14,7 @@ function MyRentalsContainer() {
     })
 
     return (
-        <div className="login" style={{backgroundImage : `url(${background})`}}>
+        <div className="login" style={{ backgroundColor: '#f2e6ff' }}>
             <Header />
             <MyRentalsList listOfRentals={rentals}/>
         </div>

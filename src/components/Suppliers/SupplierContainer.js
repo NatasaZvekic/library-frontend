@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import NewHead from '../Header/Header'
+import NewHead from '../Header/HeaderTwo'
 import SupplierService from './SupplierService';
 import SupplierList from './SupplierList'
 import background from '../assets/photo/unnamed.jpg'
@@ -26,7 +26,7 @@ function SupplierContainer() {
     }
 
     return (
-        <div className="login" style={{ backgroundImage: `url(${background})` }}>
+        <div className="login" style={{ backgroundColor: '#f2e6ff' }}>
             <NewHead />
             <SupplierList supplierList={suppliers}
                 insertSupplier={insertSupplier} 

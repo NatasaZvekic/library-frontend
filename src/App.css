@@ -137,14 +137,8 @@
   margin-top:-30px
 }
 hr {
-  border:none;
-  border-top:1px dotted #979696;
-  color:#fff;
-  background-color:#fff;
-  height:1px;
-  width:90%;
+  border: 1px dotted #ff0000; border-style: none none dotted; color: #fff; background-color: #fff;
 }
-
 .row {
   float: left;
   width: 50%;
@@ -262,8 +256,8 @@ hr {
 }
 .login{
   min-width: 100%;
-  background-image: url("https://lh3.googleusercontent.com/_VhXyRoNWgkmPEx5yGIhKed-DWX_ayISf7mOt03AD6FdTSMjeWvA8Q3OwWAgFuw-pUL46BQtZsnfQFozkqRETGlSbg=w640-h400-e365-rj-sc0x00ffffff");
- position: fixed;
+  backgroundColor: #f2e6ff;
+   position: fixed;
  min-height: 100%;
  background-size: contain;
  background-position: unset;
@@ -342,11 +336,22 @@ h2{
 .blokPhoto{
   width: 70%;
   float: left;
-  height:160px ;
+  height:200px ;
   margin-left: 5%;
   margin-top:-30px;
   background: chocolate;
 }
+
+.blokPhoto1{
+  width: 70%;
+  float: left;
+  height:160px ;
+  margin-left: 5%;
+  margin-top:-30px;
+  border:0;
+  background: chocolate;
+}
+
 
 .blokDetail{
   width: 60%;
@@ -379,7 +384,7 @@ h2{
 }
 .center {
   margin: auto;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   text-align: center;
 }
@@ -388,23 +393,25 @@ h2{
   border: 1px solid #ececec;
   margin: 2px;
   padding: 2px;
-  font-size: 12px;
+  font-size: 21px;
   cursor: pointer;
+  height: 30px;
   text-decoration: none;
-
 }
+
 .page-item:hover{
  background: #ccc;
-}
+ height: 100%;
+}searchBox
 
 .page-item-active{
   display: inline-block;  
   margin: 2px;
-  padding: 2px;
-  font-size: 12px;
+  height: 30px;
+  font-size: 21px;
   cursor: pointer;
   color:black;
-  background: #d2d2d2;
+  background: white;
   text-decoration: none;
 }
 .modalDialog{
@@ -493,12 +500,24 @@ justify-content: end;
   }
 }
 
+.NavbarItems2{
+  height: 48px;
+  width: 100%;
+  background-color:  gray;
+  text-align: center;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
 .NavbarItems1{
   height: 48px;
   width: 100%;
-  background-color:  black;
+  background-color:  transparent;
+  text-align: center;
   color:white;
-
+  margin-top: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -518,42 +537,44 @@ justify-content: end;
 }
 
 .nav-links1{
-  float:left;
+  float:center;
+  font-family: 'Karla', sans-serif;
   text-decoration: none;
   height: 100%;
-  padding:12px;
+  padding:18px;
   color:white;
+  font-size: 19px;
 }
 
 .nav-links1.active{
-  float:left;
+  float:center;
+  font-size: 19px;
   text-decoration: none;
-  background: #979696;
+  background: transparent;
+  color: #ff9900;
   height: 105%;
   padding:12px;
-  color:white;
+ 
 }
 .nav-links1r.active{
-  
+  font-size: 19px;
   text-decoration: none;
-  background: #ccc;
+  color: #ff9900;
  
 }
 .nav-links1r{
-  float:right;
- 
+  float:center;
+  font-size: 19px;
   text-decoration: none;
   padding:12px;
   color:white;
 }
 .nav-links1r:hover{
-  background-color: #ccc;
-  color:white;
+  color:#ff9900;
   text-decoration: none;
 }
 .nav-links1:hover{
-  background-color: #ccc;
-  color:white;
+  color:#ff9900;
   text-decoration: none;
 }
 
@@ -618,21 +639,27 @@ justify-content: end;
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-top: 4px;
+}
 
+.left{
+  float:right;
+  margin-right: 10px;
 }
 
 .searchBox{
-  height: 30px;
-  width: 60%;
-  background-color: #ccc;
-  margin-left: 20%;
+  height: 45px;
+  padding-top: 13px;
+  width: 70%;
+  border-radius: 2px;
+  margin-left: 30%;
   margin-top:30px;
 }
 
 .searchInput{
   float:left;
   width: 60%;
-  height:100%;
+  border-radius: 2px;
+  height: 100%;
   background-color: white;
   border: 1px solid #ccc
 }
@@ -649,7 +676,7 @@ justify-content: end;
 
 .createRental{
   height: 30px;
-  width: 16%;
+  width: auto;
   background-color: white;
   border: 1px solid #323232;
   margin-left:8.9%;
@@ -681,5 +708,138 @@ justify-content: end;
 .registerPage{
   width: 50%;
   margin-left: 25%;
+  margin-top: 50px;
+}
+
+
+
+.form-heading { color:#fff; font-size:23px;}
+.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+.main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #979696;
+  max-width: 38%;
+  padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group {
+  margin-bottom:10px;
+}
+.login-form{ text-align:center;
+
+  
+  }
+.forgot a {
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.btn.btn-primaryNoM {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  font-size: 14px;
+  width: auto;
+  height: 30px;
+  color: white;
+  margin-top: -20px;
+}
+.btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  font-size: 14px;
+  width: auto;
+  height: 30px;
+  color: white;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+.login-form  .btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+.forgot {
+  text-align: left; margin-bottom:30px;
+}
+.botto-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto;
+}
+.login-form .btn.btn-primary.reset {
+  background: #ff9900 none repeat scroll 0 0;
+}
+.back { text-align: left; margin-top:10px;}
+.back a {color: #444444; font-size: 13px;text-decoration: none;}
+body#LoginForm{  background-repeat:no-repeat; background-position:center; background-size:cover; padding:10px;}
+.proba{
+  border-radius: 5px;
+  box-shadow: 0 0 5px #979696;
+}
+
+
+
+.mainTitle{
+  font-family: 'STIX Two Math', serif;
+  color:white;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-top: 3%;
+  font-size: 30px;
+}
+
+
+.secondTitle{
+  font-family: 'Karla', sans-serif;
+  color:white;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-top: 250px;
+  font-size: 45px;
+}
+
+.dotted{
+  border:none;
+  border-top:1px dashed #979696;
+  color:#fff;
+  background-color:transparent;
+  height:1px;
+  width:80%;
+}
+
+
+.aboutTitle{
+  padding-left: 40px;
+  font-size: 19px;
+}
+
+.aboutText{
+  padding-left: 40px;
+}
+
+.aboutMainTitle{
+  color:black;
+  font-size: 30px;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
   margin-top: 50px;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import UserService from './UserService'
-import NewHead from '../Header/Header'
+import NewHead from '../Header/HeaderTwo'
 import UserList from './UserList';
 import background from '../assets/photo/unnamed.jpg'
 
@@ -27,7 +27,7 @@ function UserContainer() {
     }
 
     return (
-        <div className="login" style={{ backgroundImage: `url(${background})` }}>
+        <div className="login" style={{ backgroundColor: '#f2e6ff' }}>
             <NewHead />
             <UserList
                 userList={users}

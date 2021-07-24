@@ -3,12 +3,12 @@ import axios from 'axios'
 const EmployeeService ={
 
     getAllEmployees: () =>{
-        return axios.get("https://localhost:44324/employees",
+        return axios.get("http://localhost:44324/employees",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
     
     deleteEmployee: (id) =>{
-        return axios.delete(`https://localhost:44324/employees/${id}`,
+        return axios.delete(`http://localhost:44324/employees/${id}`,
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
@@ -26,7 +26,7 @@ const EmployeeService ={
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`https://localhost:44324/employees/${id}`, newEmployee , {
+        return axios.put(`http://localhost:44324/employees/${id}`, newEmployee , {
                 headers: header
             }).then(response => console.log("resp " + response.data))
             .catch(error => {
@@ -50,7 +50,7 @@ const EmployeeService ={
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("https://localhost:44324/employees", newEmployee , {
+        return axios.post("http://localhost:44324/employees", newEmployee , {
                 headers: header
             }).then(response => console.log("resp " + response.data))
             .catch(error => {

@@ -55,7 +55,7 @@
 //                         defaultValue={this.state.address}
 //                         onChange={this.onChange.bind(this)}
 //                     />
-                   
+
 //                 </Modal.Body>
 //                 <Modal.Footer>
 //                     <Button variant="secondary" onClick={this.props.closeAddDialog}> Close  </Button>
@@ -121,37 +121,43 @@ const InsertDialog = (props) => {
                 <Modal.Title>Add new supplier</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Company name"
-                    className="inputFiled"
-                    defaultValue={values.name}
-                    onChange={handleChange}
-                />
-                {<p>{errors.name}</p>}
-                <input
-                    type="number"
-                    name="contact"
-                    className="inputFiled"
-                    placeholder="Supplier contact"
-                    defaultValue={values.contact}
-                    onChange={handleChange}
-                />
-                {<p>{errors.contact}</p>}
-                <input
-                    type="text"
-                    name="address"
-                    className="inputFiled"
-                    placeholder="Supplier address"
-                    defaultValue={values.address}
-                    onChange={handleChange}
-                />
-                {<p>{errors.address}</p>}
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Company name"
+                        className="form-control"
+                        defaultValue={values.name}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.name}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="number"
+                        name="contact"
+                        className="form-control"
+                        placeholder="Supplier contact"
+                        defaultValue={values.contact}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.contact}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="address"
+                        className="form-control"
+                        placeholder="Supplier address"
+                        defaultValue={values.address}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.address}</p>}
+                </div>
             </Modal.Body>
             <Modal.Footer >
                 <Button variant="secondary" onClick={handleClose}> Close  </Button>
-                <Button onClick={handleSubmit} variant="primary">Insert</Button>
+                <Button onClick={handleSubmit} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Insert</Button>
             </Modal.Footer>
         </Modal>
     )

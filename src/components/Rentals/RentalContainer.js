@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import NewHead from '../Header/Header'
+import NewHead from '../Header/HeaderTwo'
 import RentalList from './RentalList';
 import RentalService from './RentalService';
 import EmployeeService from '../Employees/EmployeeService'
@@ -38,7 +38,7 @@ function RentalContainer() {
     }
 
     return (
-        <div className="login" style={{ backgroundImage: `url(${background})` }}>
+        <div className="login" style={{ backgroundColor: '#f2e6ff' }}>
             <NewHead />
             <RentalList
                 completedRentals={completedRentals}

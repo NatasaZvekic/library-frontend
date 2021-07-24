@@ -26,17 +26,19 @@ export default class UpdateDialog extends Component {
                         <Modal.Title>Update resource</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <input
-                            type="text"
-                            name={this.props.genreName}
-                            className="inputFiled"
-                            defaultValue={this.props.genreName}
-                            onChange={this.onChange.bind(this)}
-                        />
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                name={this.props.genreName}
+                                class="form-control"
+                                defaultValue={this.props.genreName}
+                                onChange={this.onChange.bind(this)}
+                            />
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={ this.props.closeUpdateDialog}> Close</Button>
-                        <Button onClick={() =>this.props.updateGenre(this.state.genreName)} variant="primary">Update</Button>
+                        <Button variant="secondary" onClick={this.props.closeUpdateDialog}> Close</Button>
+                        <Button onClick={() => this.props.updateGenre(this.state.genreName)}  variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }} >Update</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

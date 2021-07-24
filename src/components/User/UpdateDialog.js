@@ -16,7 +16,8 @@ export default class UpdateDialog extends Component {
             email: '',
         };
     }
-    onChange(e) { console.log("i se " + this.state.role)
+    onChange(e) {
+        console.log("i se " + this.state.role)
         if (e.target.name == "contact") {
             this.setState({ [e.target.name]: +e.target.value })
         } else {
@@ -33,55 +34,67 @@ export default class UpdateDialog extends Component {
                     <Modal.Title>Update resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <input
+                    <div class="form-group">
+                        <input
                             type="text"
                             name="name"
-                            className="inputFiled"
+                            class="form-control"
                             placeholder="User first name"
                             defaultValue={this.props.name}
                             onChange={this.onChange.bind(this)}
                         />
+                    </div>
+                    <div class="form-group">
                         <input
                             type="text"
                             name="lastname"
-                            className="inputFiled"
+                            class="form-control"
                             placeholder="User last name"
                             defaultValue={this.props.lastname}
                             onChange={this.onChange.bind(this)}
                         />
+                    </div>
+                    <div class="form-group">
                         <input
                             type="number"
                             name="contact"
-                            className="inputFiled"
+                            class="form-control"
                             placeholder="User contact"
                             defaultValue={this.props.contact}
                             onChange={this.onChange.bind(this)}
                         />
-                         <input
+                    </div>
+                    <div class="form-group">
+                        <input
                             type="text"
                             name="address"
-                            className="inputFiled"
+                            class="form-control"
                             placeholder="User address"
                             defaultValue={this.props.address}
                             onChange={this.onChange.bind(this)}
                         />
+                    </div>
+                    <div class="form-group">
                         <input
                             type="text"
                             name="email"
-                            className="inputFiled"
+                            class="form-control"
                             placeholder="User email"
                             defaultValue={this.props.email}
                             onChange={this.onChange.bind(this)}
                         />
+                    </div>
+                    <div class="form-group">
                         <input
                             type="text"
                             name="role"
-                            className="inputFiled"
+                            class="form-control"
                             placeholder="User role"
                             defaultValue={this.props.role}
                             onChange={this.onChange.bind(this)}
                         />
-                    
+                    </div>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeUpdateDialog}> Close </Button>
@@ -92,7 +105,7 @@ export default class UpdateDialog extends Component {
                         this.state.address == "" ? this.props.address : this.state.address,
                         this.state.email == "" ? this.props.email : this.state.email,
                         this.state.role == "" ? this.props.role : this.state.role,
-                    )} variant="primary">Update</Button>
+                    )} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Update</Button>
                 </Modal.Footer>
             </Modal>
         )

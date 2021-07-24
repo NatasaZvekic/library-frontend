@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Header/Header'
+import Header from '../Header/HeaderTwo'
 import LoginService from '../LogIn/LoginService'
 import RegisterPage from './RegisterPage'
 import RegisterService from './RegisterService'

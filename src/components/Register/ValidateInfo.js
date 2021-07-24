@@ -3,28 +3,30 @@ export default function ValidateInfo(values) {
     let errors = {}
 
     if (!values.name) {
-        errors.name = "Employee name required!"
+        errors.name = "Name required!"
     }
     if (!values.lastname) {
-        errors.lastname = "Employee lastname required!"
+        errors.lastname = "Lastname required!"
     }
     if (!values.address) {
-        errors.address = "Employee address required!"
+        errors.address = "Address required!"
     }
     if (!values.contact) {
         errors.contact = "Contact required!"
 
     }
-    if(values.password.length !== undefined){
-    if (values.password.length < 10) { console.log("pass " + values.password)
-        errors.password = "Password must be at least 8 characters long!"
+    if (!values.email) {
+        errors.email = "Email required!"
+
     }
+    if (!values.password) {
+        errors.password = "Password required!"
 
     }
     if (!validator.isEmail(values.email)) {
         errors.email = "Email required!"
     }
-    
+
 
 
 

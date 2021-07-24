@@ -52,76 +52,90 @@ const InsertDialog = (props) => {
             backdrop="static"
             keyboard={false} >
             <Modal.Header >
-                <Modal.Title>Add new employee</Modal.Title>
+                <Modal.Title>Add new user</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <input
-                    type="text"
-                    name="name"
-                    className="inputFiled"
-                    placeholder="User name"
-                    defaultValue={values.name}
-                    onChange={handleChange}
-                />
-                {<p>{errors.name}</p>}
-                <input
-                    type="text"
-                    name="lastname"
-                    placeholder="User last name"
-                    className="inputFiled"
-                    defaultValue={values.lastname}
-                    onChange={handleChange}
-                />
-                {<p>{errors.lastname}</p>}
-                <input
-                    type="number"
-                    name="contact"
-                    className="inputFiled"
-                    placeholder="User contact"
-                    defaultValue={values.contact}
-                    onChange={handleChange}
-                />
-                {<p>{errors.contact}</p>}
-                <input
-                    type="text"
-                    name="address"
-                    className="inputFiled"
-                    placeholder="User address"
-                    defaultValue={values.address}
-                    onChange={handleChange}
-                />
-                {<p>{errors.address}</p>}
-                <input
-                    type="text"
-                    name="email"
-                    className="inputFiled"
-                    placeholder="User email"
-                    defaultValue={values.email}
-                    onChange={handleChange}
-                />
-                {<p>{errors.email}</p>}
-                <input
-                    type="text"
-                    name="role"
-                    className="inputFiled"
-                    defaultValue={values.role}
-                    placeholder="User role"
-                    onChange={handleChange}
-                />
-                {<p>{errors.role}</p>}
-                <input
-                    type="password"
-                    name="password"
-                    className="inputFiled"
-                    placeholder="User password"
-                    defaultValue={values.password}
-                    onChange={handleChange}
-                />
-                {<p>{errors.password}</p>}
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        placeholder="User name"
+                        defaultValue={values.name}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.name}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="lastname"
+                        placeholder="User last name"
+                        class="form-control"
+                        defaultValue={values.lastname}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.lastname}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="number"
+                        name="contact"
+                        class="form-control"
+                        placeholder="User contact"
+                        defaultValue={values.contact}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.contact}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="address"
+                        class="form-control"
+                        placeholder="User address"
+                        defaultValue={values.address}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.address}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="email"
+                        class="form-control"
+                        placeholder="User email"
+                        defaultValue={values.email}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.email}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="role"
+                        class="form-control"
+                        defaultValue={values.role}
+                        placeholder="User role"
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.role}</p>}
+                </div>
+                <div class="form-group">
+                    <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="User password"
+                        defaultValue={values.password}
+                        onChange={handleChange}
+                    />
+                    {<p>{errors.password}</p>}
+                </div>
             </Modal.Body>
             <Modal.Footer >
                 <Button variant="secondary" onClick={handleClose}> Close  </Button>
-                <Button onClick={handleSubmit} variant="primary">Insert</Button>
+                <Button onClick={handleSubmit} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Insert</Button>
             </Modal.Footer>
         </Modal>
     )

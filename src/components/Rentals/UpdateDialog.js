@@ -22,31 +22,37 @@ const UpdateDialog = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <form>
-                    <select style={{ marginLeft: '23px' }}
-                        onChange={(event) => changeEmployee(event.target.value)}
-                        value={employee}
-                    >
-                        {props.employeeList.map((employee) => {
-                            return (
-                                <option value={employee.employeeID}>{employee.employeeName} {employee.employeeLastName}</option>
+                    <div class="form-group">
+                        <select
+                            class="form-control"
+                            onChange={(event) => changeEmployee(event.target.value)}
+                            value={employee}
 
-                            )
-                        })}
+                        >
+                            {props.employeeList.map((employee) => {
+                                return (
+                                    <option value={employee.employeeID}>{employee.employeeName} {employee.employeeLastName}</option>
 
-                    </select>
-                    <br />
-                    <select style={{ marginLeft: '23px' }}
-                        onChange={(event) => changeDeliverer(event.target.value)}
-                        value={deliverer}
-                    >
-                        {props.deliveryList.map((deliverer) => {
-                            return (
-                                <option value={deliverer.deliveryID}>{deliverer.deliveryCompanyName}</option>
+                                )
+                            })}
 
-                            )
-                        })}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select
+                            class="form-control"
+                            onChange={(event) => changeDeliverer(event.target.value)}
+                            value={deliverer}
+                        >
+                            {props.deliveryList.map((deliverer) => {
+                                return (
+                                    <option value={deliverer.deliveryID}>{deliverer.deliveryCompanyName}</option>
 
-                    </select>
+                                )
+                            })}
+
+                        </select>
+                    </div>
                 </form>
             </Modal.Body>
             <Modal.Footer>
@@ -54,7 +60,7 @@ const UpdateDialog = (props) => {
                 <Button onClick={() => props.updateRental(
                     employee == "" ? props.employee : employee,
                     deliverer == "" ? props.deliverer : deliverer,
-                )} variant="primary">Complete</Button>
+                )} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Complete</Button>
             </Modal.Footer>
         </Modal>
 

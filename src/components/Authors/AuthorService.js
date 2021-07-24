@@ -2,10 +2,10 @@ import axios from 'axios'
 const AuthorService = {
 
     getAllAuthors: () => {
-        return axios.get("https://localhost:44324/authors", { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
+        return axios.get("http://localhost:44324/authors", { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
     deleteAuthor: (id) => {
-        return axios.delete(`https://localhost:44324/authors/${id}`, { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
+        return axios.delete(`http://localhost:44324/authors/${id}`, { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
     updateAuthor: (id, name, lastname, year) => { console.log("values " + name + " " + lastname + " " + year)
         const newAuthor = {
@@ -18,7 +18,7 @@ const AuthorService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`https://localhost:44324/authors/${id}`, newAuthor , {
+        return axios.put(`http://localhost:44324/authors/${id}`, newAuthor , {
                 headers: header
             }).then(response => console.log("resp " + response.data))
             .catch(error => {
@@ -38,7 +38,7 @@ const AuthorService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("https://localhost:44324/authors", newAuthor , {
+        return axios.post("http://localhost:44324/authors", newAuthor , {
                 headers: header
             }).then(response => console.log("resp " + response.data))
             .catch(error => {

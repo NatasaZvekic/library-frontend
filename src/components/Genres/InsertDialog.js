@@ -8,7 +8,7 @@ const InsertDialog = (props) => {
     const [values, setValues] = useState({
         genreName: '',
     })
- 
+
     const handleChange = e => {
         const { name, value } = e.target
         setValues({
@@ -17,19 +17,19 @@ const InsertDialog = (props) => {
         })
     }
 
-    const handleSubmit = e => {  
+    const handleSubmit = e => {
         e.preventDefault();
         if (values.genreName === "" || values.genreName === undefined) {
             setErrors(validate(values))
         }
-        else { 
+        else {
             props.insertGenre(values.genreName)
             setErrors({})
-            setValues({values: ''})
+            setValues({ values: '' })
         }
     }
 
-    const handleClose = () => { 
+    const handleClose = () => {
         props.closeAddDialog()
         setErrors({})
         setValues({ values: '' })
@@ -43,18 +43,20 @@ const InsertDialog = (props) => {
                 <Modal.Title>Add new genre</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <input
-                    type="text"
-                    placeholder="Genre name"
-                    name="genreName"
-                    className="inputFiled"
-                    defaultValue={values.genreName}
-                    onChange={handleChange}   />
+                <div class="form-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Genre name"
+                        name="genreName"
+                        defaultValue={values.genreName}
+                        onChange={handleChange} />
                     {<p>{errors.genreName}</p>}
+                </div>
             </Modal.Body>
             <Modal.Footer >
                 <Button variant="secondary" onClick={handleClose}> Close  </Button>
-                <Button onClick={handleSubmit} variant="primary">Insert</Button>
+                <Button onClick={handleSubmit} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Insert</Button>
             </Modal.Footer>
         </Modal>
     )

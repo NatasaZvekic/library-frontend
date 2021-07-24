@@ -2,7 +2,7 @@ import { useTransition } from '@react-spring/core'
 import { animated } from '@react-spring/web'
 import React, { Component, useEffect, useState } from 'react'
 import Header from '../Header/Header'
-import background from '..//assets/photo/b1.jpg'
+import background from '..//assets/photo/many2.png'
 
 const Home = () => {
     const transation = useTransition(true, {
@@ -17,13 +17,20 @@ const Home = () => {
     })
     return (
         <div>
+
+            
             <div className="login" style={{
                 backgroundImage: `url(${background})`,
                 backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                backgroundPosition: 'fill',
+                width:'100px',
+
+                height: '500px'
             }}>
-                <Header />
-                {transation((style, item) =>
+                <p className="mainTitle">PUBLIC LIBRARY</p>
+                <Header style={{marginTop: '30px'}} />
+         
+                {/* {transation((style, item) =>
                     item ? <animated.div style={style} className="title2">
                         <p style={{ marginBottom: '-10px' }}>A reader lives a thousand lives before he dies.  </p>
                     </animated.div> : ''
@@ -34,8 +41,10 @@ const Home = () => {
                         <p>The man who never reads lives only one. </p>
                     </animated.div> : ''
 
-                )}
+                )} */}
 
+                <hr className="dotted"/>
+                <p className="secondTitle">THE WONDERFUL WORLD OF READING</p>
             </div>
             {/* <div className="container"> */}
             {/* <News photoL={newsOne} side="l"

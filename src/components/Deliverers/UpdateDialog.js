@@ -31,27 +31,33 @@ export default class UpdateDialog extends Component {
                     <Modal.Title>Update resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                <div class="form-group">
                     <input
                         type="text"
                         name="companyName"
-                        className="inputFiled"
+                        className="form-control"
                         defaultValue={this.props.companyName}
                         onChange={this.onChange.bind(this)}
                     />
+                    </div>
+                    <div class="form-group">
                     <input
                         type="text"
                         name="address"
-                        className="inputFiled"
+                        className="form-control"
                         defaultValue={this.props.address}
                         onChange={this.onChange.bind(this)}
                     />
+                    </div>
+                    <div class="form-group">
                     <input
                         type="number"
                         name="contact"
-                        className="inputFiled"
+                        className="form-control"
                         defaultValue={this.props.contact}
                         onChange={this.onChange.bind(this)}
                     />
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeUpdateDialog}> Close </Button>
@@ -62,7 +68,7 @@ export default class UpdateDialog extends Component {
                                 this.state.contact,
                             )
                     }
-                        variant="primary">Update</Button>
+                    variant="secondary" style={{backgroundColor: '#f0ad4e', borderColor: '#f0ad4e'}}>Update</Button>
                 </Modal.Footer>
             </Modal>
         )

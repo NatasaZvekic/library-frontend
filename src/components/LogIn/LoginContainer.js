@@ -2,7 +2,7 @@ import React from 'react'
 import LoginService from './LoginService'
 import FormSignUp from './FormSignUp';
 import background from '../assets/photo/unnamed.jpg'
-import NewHead from '../Header/Header';
+import NewHead from '../Header/HeaderTwo';
 
 const LoginContainer = () => {
 

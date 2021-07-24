@@ -10,7 +10,7 @@ export default class Header extends Component {
         this.setState({ clicked: !this.state.clicked })
     }
 
-    render() { console.log("role " + localStorage.getItem("role"))
+    render() { 
         if (localStorage.getItem("jwtToken")) {
             VerifyToken.verifyToken().then(response => {
                 if (response.data == false) {
@@ -34,8 +34,8 @@ export default class Header extends Component {
                 <div className={this.state.clicked ? 'nav-menu1 active' : 'nav-menu1'}>
                     <NavLink to="/home" className="nav-links1">Home</NavLink>
                     <NavLink to="/about" className="nav-links1">About Us</NavLink>
-                    <NavLink to="/books" className="nav-links1">Books</NavLink>
-                    <NavLink to="/galery" className="nav-links1">Galery</NavLink>
+                    <NavLink to="/galery" className="nav-links1">Gallery</NavLink>
+                    <NavLink to="/books" className="nav-links1">Catalog</NavLink>
                     {/* <NavLink to="/login" className="buttonLeft">Log in</NavLink> */}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/genres" className="nav-links1">Genres</NavLink> : ''}
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/employees" className="nav-links1">Employees</NavLink> : ''}
@@ -46,7 +46,7 @@ export default class Header extends Component {
                     {localStorage.getItem("role") === "admin" ? <NavLink to="/users" className="nav-links1">Users</NavLink> : ''}
                     {localStorage.getItem("role") === "user" ? <NavLink to="/myRentals" className="nav-links1">My Rentals</NavLink> : ''}
                     {<NavLink to={localStorage.getItem("jwtToken") !== null ? "logout" : "/login"} className="nav-links1r">{localStorage.getItem("jwtToken") !== null ? "Log out" : "Log in"}</NavLink>}
-                    {localStorage.getItem("userName") !== null ? <div className="nav-links1r">Hello {localStorage.getItem("userName")}!</div> : ''}
+                    {/* {localStorage.getItem("userName") !== null ? <div className="nav-links1r">Hello {localStorage.getItem("userName")}!</div> : ''} */}
                 </div>
             </div>
         )

@@ -6,7 +6,7 @@ const LoginService = {
             email: username,
             password:password
         }
-        return axios.post("https://localhost:44324/authenticate", user)
+        return axios.post("http://localhost:44324/authenticate", user)
         
         
     }

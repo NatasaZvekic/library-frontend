@@ -29,58 +29,141 @@ const RegisterPage = (props) => {
         })
     }
 
-    const handleSubmit = async e => {
+    const handleSubmit = async e => { console.log("Clicked")
         e.preventDefault();
         if (values.name === "" || values.lastname === "" || values.contact === "" || values.email === "" ||
             values.address === "" || values.password === "" ||
             values.name === undefined || values.contact === undefined || values.email === undefined ||
             values.address === undefined || values.password === undefined ||
             values.lastname === undefined || values.password.length < 10 || !validator.isEmail(values.email)) {
-            setErrors(validate(values))
+            setErrors(validate(values));  console.log("sdfsd")
         }
-        else {
+        else { console.log("sdfsd")
             const res = await props.insertUser(values.name, values.lastname, values.contact, values.address,
                 values.email, values.password).then(
                     console.log("done")
                 )
             setErrors("")
             console.log("finised..")
-           
+
             if (localStorage.getItem("status") === "200") {
                 console.log("200")
                 await LoginService.LoginUser(values.email, values.password)
-                .then((data) => {
-                    console.log(" i do log"  + " " + values.password)
-                    localStorage.setItem("jwtToken", data.data.token)
-                    console.log(data.status + " data");
-                    localStorage.setItem("role", data.data.role.role)
-                    localStorage.setItem("userID", data.data.role.userID)
-                    localStorage.setItem("userName", data.data.role.userName + " " + data.data.role.userLastName)
-                     console.log(data.data.role.role + " role") 
-                    localStorage.setItem("status", data.status)
-                    return data.status
-                }).catch(function (error) {
-                    console.log("error " + error)
-                    localStorage.setItem("status", 400)
-    
-                    return "error"
-                })
+                    .then((data) => {
+                        console.log(" i do log" + " " + values.password)
+                        localStorage.setItem("jwtToken", data.data.token)
+                        console.log(data.status + " data");
+                        localStorage.setItem("role", data.data.role.role)
+                        localStorage.setItem("userID", data.data.role.userID)
+                        localStorage.setItem("userName", data.data.role.userName + " " + data.data.role.userLastName)
+                        console.log(data.data.role.role + " role")
+                        localStorage.setItem("status", data.status)
+                        return data.status
+                    }).catch(function (error) {
+                        console.log("error " + error)
+                        localStorage.setItem("status", 400)
+
+                        return "error"
+                    })
 
                 history.push("/home")
                 setValues({ values: '' })
             }
-            else if(localStorage.getItem("status") === "400") { console.log("not 200")
+            else if (localStorage.getItem("status") === "400") {
+                console.log("not 200")
                 setOpened(true);
                 setTimeout(function () {
                     setOpened(false)
                 }, 5000);
-                
+
             }
         }
     }
 
     return (<div>
-        <Modal show={opened} >
+
+        <body id="LoginForm" style={{ height: '1000px', paddingTop: "70px" }}>
+            <div class="container">
+                <div class="login-form">
+                    <div class="main-div">
+                        <div class="panel">
+                            <h1 class="loginTitle">REGISTER</h1>
+                        </div>
+                        <form id="Login">
+                            <div>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    placeholder="Name"
+                                    defaultValue={values.name}
+                                    onChange={handleChange}
+                                />
+                                {<p>{errors.name}</p>}
+
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    name="lastname"
+                                    class="form-control"
+                                    placeholder="Lastname"
+                                    defaultValue={values.lastname}
+                                    onChange={handleChange}
+                                />
+                                {errors.lastname && <p>{errors.lastname}</p>}
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="number"
+                                    name="contact"
+                                    class="form-control"
+                                    placeholder="User contact"
+                                    defaultValue={values.contact}
+                                    onChange={handleChange}
+                                />
+                                {errors.contact && <p>{errors.contact}</p>}
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    name="address"
+                                    class="form-control"
+                                    placeholder="User address"
+                                    defaultValue={values.address}
+                                    onChange={handleChange}
+                                />
+                                {<p>{errors.address}</p>}
+                            </div>
+                            <input
+                                type="text"
+                                name="email"
+                                class="form-control"
+                                placeholder="User email"
+                                defaultValue={values.email}
+                                onChange={handleChange}
+                            />
+                            {<p>{errors.email}</p>}
+                            <input
+                                type="password"
+                                name="password"
+                                class="form-control"
+                                placeholder="User password"
+                                defaultValue={values.password}
+                                onChange={handleChange}
+                            />
+                            {<p>{errors.password}</p>}
+                    
+                            <button type="submit" onClick={handleSubmit} class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </body>
+
+        {/* <Modal show={opened} >
             <Modal.Header style={{ background: 'firebrick', color: 'white' }}>Given email alredy exists. Please try again.</Modal.Header>
         </Modal>
 
@@ -141,7 +224,7 @@ const RegisterPage = (props) => {
             />
             {<p>{errors.password}</p>}
             <button type="submit" onClick={handleSubmit} className="loginBtn">Register</button> <br />
-        </div>
+        </div> */}
     </div>
     )
 }
