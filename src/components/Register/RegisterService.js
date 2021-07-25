@@ -6,12 +6,12 @@ const RegisterService = {
 
     insertUser: (name, lastname, contact, address, email, password) => { console.log("in service")
         const newUser = {
-            userName: name,
+            name: name,
             userLastName: lastname,
             userContact: Number(contact),
             userAddress: address,
             password: password,
-            email: email,
+            username: email,
     
         }
 

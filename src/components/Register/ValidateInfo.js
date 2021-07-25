@@ -16,15 +16,12 @@ export default function ValidateInfo(values) {
 
     }
     if (!values.email) {
-        errors.email = "Email required!"
+        errors.email = "Username required!"
 
     }
     if (!values.password) {
         errors.password = "Password required!"
 
-    }
-    if (!validator.isEmail(values.email)) {
-        errors.email = "Email required!"
     }
 
 

@@ -19,7 +19,7 @@ export default class InsertDialog extends Component {
             supplierID: '',
             url: '',
             genreID: '',
-            price : 0
+            price: 0
         };
 
     }
@@ -30,17 +30,19 @@ export default class InsertDialog extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
+
     setBook = (bookID) => {
         this.setState({ bookID: bookID })
     }
+
     setSupplier = (supplierID) => {
         this.setState({ supplierID: supplierID })
     }
 
     setGenre = (genreID) => {
-        console.log("gid " + genreID)
         this.setState({ genreID: genreID })
     }
+
     render() {
         return (
             <Modal

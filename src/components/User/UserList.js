@@ -17,7 +17,7 @@ export default class UserList extends Component {
             contact: 0,
             address: '',
             role: '',
-            email: '',
+            userName: '',
             password: ' '
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
@@ -33,10 +33,10 @@ export default class UserList extends Component {
     }
     openDialogForUpdate = (user) => {
         this.setState({ id: user.userID })
-        this.setState({ name: user.userName })
+        this.setState({ name: user.name })
         this.setState({ lastname: user.userLastName })
         this.setState({ role: user.role })
-        this.setState({ email: user.email })
+        this.setState({ userName: user.userName })
         this.setState({ address: user.userAddress })
         this.setState({ contact: user.userContact })
         this.setState({ showUpdateDialog: true })
@@ -58,7 +58,8 @@ export default class UserList extends Component {
         this.props.deleteUser(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
-    updateUser = (name, lastname, contact, address, email, role) => { console.log("role " + role)
+    updateUser = (name, lastname, contact, address, email, role) => {
+        console.log("role " + role)
         this.props.updateUser(this.state.id, name, lastname, contact, address, email, role)
         this.setState({ showUpdateDialog: false })
     }
@@ -66,7 +67,7 @@ export default class UserList extends Component {
         this.props.insertUser(name, lastname, contact, address, email, role, password)
         this.setState({ showAddDialog: false })
     }
-    
+
     render() {
         return (
             <div>
@@ -81,12 +82,12 @@ export default class UserList extends Component {
                     showAddDialog={this.state.showAddDialog}
                     closeAddDialog={this.closeAddDialog} />
 
-                 <UpdateDialog
+                <UpdateDialog
                     updateUser={this.updateUser}
                     name={this.state.name}
                     lastname={this.state.lastname}
                     role={this.state.role}
-                    email={this.state.email}
+                    userName={this.state.userName}
                     address={this.state.address}
                     contact={this.state.contact}
                     showUpdateDialog={this.state.showUpdateDialog}
@@ -95,7 +96,7 @@ export default class UserList extends Component {
                 <DeleteDialog
                     deleteUser={this.deleteUser}
                     closeDeleteDialog={this.closeDeleteDialog}
-                    showDeleteDialog={this.state.showDeleteDialog} /> 
+                    showDeleteDialog={this.state.showDeleteDialog} />
             </div>
         )
     }

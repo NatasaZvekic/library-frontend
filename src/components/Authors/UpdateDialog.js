@@ -13,11 +13,9 @@ export default class UpdateDialog extends Component {
             lastname: '',
             yearOfBirth: ''
         };
-        console.log("im here")
-
     }
-   
-    
+
+
     onChange(e) {
         if (e.target.name == "yearOfBirth") {
             this.setState({ [e.target.name]: +e.target.value })
@@ -25,7 +23,7 @@ export default class UpdateDialog extends Component {
             this.setState({ [e.target.name]: e.target.value })
         }
     }
-    render() { 
+    render() {
         return (
             <Modal
                 show={this.props.showUpdateDialog}
@@ -35,32 +33,32 @@ export default class UpdateDialog extends Component {
                     <Modal.Title>Update resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <div class="form-group">
-                    <input
-                        type="text"
-                        name="name"
-                        className="form-control"
-                        defaultValue={this.props.name}
-                        onChange={this.onChange.bind(this)}
-                    />
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            name="name"
+                            className="form-control"
+                            defaultValue={this.props.name}
+                            onChange={this.onChange.bind(this)}
+                        />
                     </div>
-                                    <div class="form-group">
-                    <input
-                        type="text"
-                        name="lastname"
-                        className="form-control"
-                        defaultValue={this.props.lastname}
-                        onChange={this.onChange.bind(this)}
-                    />
-                    </div>     
-                               <div class="form-group">
-                    <input
-                        type="number"
-                        name="yearOfBirth"
-                        className="form-control"
-                        defaultValue={this.props.yearOfBirth}
-                        onChange={this.onChange.bind(this)}
-                    />
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            name="lastname"
+                            className="form-control"
+                            defaultValue={this.props.lastname}
+                            onChange={this.onChange.bind(this)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="number"
+                            name="yearOfBirth"
+                            className="form-control"
+                            defaultValue={this.props.yearOfBirth}
+                            onChange={this.onChange.bind(this)}
+                        />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
@@ -72,7 +70,7 @@ export default class UpdateDialog extends Component {
                             this.state.yearOfBirth == 0 ? this.props.yearOfBirth : this.state.yearOfBirth,
                         )
                     }
-                    variant="secondary" style={{backgroundColor: '#f0ad4e', borderColor: '#f0ad4e'}}>Update</Button>
+                        variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Update</Button>
                 </Modal.Footer>
             </Modal>
         )

@@ -25,38 +25,47 @@ export default class GenreList extends Component {
         this.setState({ showDeleteDialog: true })
         this.setState({ id: genreID })
     }
+
     openDialogForUpdate = (genre) => {
         this.setState({ genreName: genre.genreName })
         this.setState({ id: genre.genreID })
         this.setState({ showUpdateDialog: true })
     }
+
     openAddDialog() {
         this.setState({ showAddDialog: true })
     }
+
     closeDeleteDialog() {
         this.setState({ showDeleteDialog: false })
     }
+
     closeUpdateDialog() {
         this.setState({ showUpdateDialog: false })
         this.setState({ genreName: '' })
     }
+
     closeAddDialog() {
         this.setState({ showAddDialog: false })
     }
+
     deleteGenre() {
         this.props.deleteGenre(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
+
     updateGenre = (genreName) => {
         this.props.updateGenre(genreName, this.state.id)
         this.setState({ showUpdateDialog: false })
         this.setState({ genreName: '' })
     }
+
     insertGenre = (genreName1) => {
         this.props.insertGenre(genreName1)
         this.setState({ showAddDialog: false })
         this.setState({ genreName: '' })
     }
+
     onChange(e) {
         this.setState({ genreName: e.target.value })
     }

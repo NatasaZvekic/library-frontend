@@ -4,7 +4,6 @@ import InsertDialog from './InsertDialog';
 import SupplierTable from './SupplierTable';
 import UpdateDialog from './UpdateDialog';
 
-
 export default class SupplierList extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +14,7 @@ export default class SupplierList extends Component {
             id: 0,
             name: '',
             contact: 0,
-            address:''
+            address: ''
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
         this.deleteSupplier = this.deleteSupplier.bind(this)
@@ -52,14 +51,14 @@ export default class SupplierList extends Component {
         this.props.deleteSupplier(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
-    updateSupplier = ( name, contact,address) => { console.log( this.state.id + " " + name + " "  + contact + " " + address)
-        this.props.updateSupplier(this.state.id, name, contact,address)
+    updateSupplier = (name, contact, address) => {
+        this.props.updateSupplier(this.state.id, name, contact, address)
         this.setState({ showUpdateDialog: false })
         this.clearAllFileds()
     }
-    
+
     insertSupplier = (name, contact, address) => {
-        this.props.insertSupplier(name, contact,address)
+        this.props.insertSupplier(name, contact, address)
         this.setState({ showAddDialog: false })
         this.setState({ genreName: '' })
     }
@@ -67,10 +66,10 @@ export default class SupplierList extends Component {
         this.setState({ genreName: e.target.value })
     }
 
-    clearAllFileds(){
-        this.setState({name: ''})
-        this.setState({contact : 0})
-        this.setState({address : ''})
+    clearAllFileds() {
+        this.setState({ name: '' })
+        this.setState({ contact: 0 })
+        this.setState({ address: '' })
     }
     render() {
         return (
@@ -81,12 +80,12 @@ export default class SupplierList extends Component {
                     openAddDialog={this.openAddDialog}
                     supplierList={this.props.supplierList} />
 
-                 <InsertDialog
+                <InsertDialog
                     insertSupplier={this.insertSupplier}
                     showAddDialog={this.state.showAddDialog}
                     closeAddDialog={this.closeAddDialog} />
 
-                 <UpdateDialog
+                <UpdateDialog
                     updateSupplier={this.updateSupplier}
                     name={this.state.name}
                     contact={this.state.contact}
@@ -94,10 +93,10 @@ export default class SupplierList extends Component {
                     showUpdateDialog={this.state.showUpdateDialog}
                     closeUpdateDialog={this.closeUpdateDialog} />
 
-                 <DeleteDialog
+                <DeleteDialog
                     deleteSupplier={this.deleteSupplier}
                     closeDeleteDialog={this.closeDeleteDialog}
-                    showDeleteDialog={this.state.showDeleteDialog} /> 
+                    showDeleteDialog={this.state.showDeleteDialog} />
             </div>
         )
     }

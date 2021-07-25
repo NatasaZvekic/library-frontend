@@ -23,10 +23,12 @@ export default class DelivererList extends Component {
         this.openAddDialog = this.openAddDialog.bind(this)
         this.openDialogForUpdate = this.openDialogForUpdate.bind(this)
     }
+
     openDialogForDelete = (id) => {
         this.setState({ showDeleteDialog: true })
         this.setState({ id: id })
     }
+
     openDialogForUpdate = (deliverer) => {
         this.setState({ showUpdateDialog: true })
         this.setState({ id: deliverer.deliveryID })
@@ -34,30 +36,37 @@ export default class DelivererList extends Component {
         this.setState({ address: deliverer.deliveryAddress })
         this.setState({ contact: deliverer.deliveryContant })
     }
+
     openAddDialog() {
         this.setState({ showAddDialog: true })
     }
+
     closeDeleteDialog() {
         this.setState({ showDeleteDialog: false })
     }
+
     closeUpdateDialog() {
         this.setState({ showUpdateDialog: false })
         this.clearAllFields()
     }
+
     closeAddDialog() {
         this.setState({ showAddDialog: false })
         this.clearAllFields()
     }
+
     deleteDeliverer() {
         this.props.deleteDeliverer(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
+
     updateDeliverer = (companyName, address, contact) => {
         this.props.updateDeliverer(this.state.id, companyName, address, contact)
         this.setState({ showUpdateDialog: false })
         this.clearAllFields()
     }
-    insertDeliverer = (companyName, address, contact) => { 
+
+    insertDeliverer = (companyName, address, contact) => {
         this.props.insertDeliverer(companyName, address, contact)
         this.closeAddDialog()
     }
@@ -75,17 +84,14 @@ export default class DelivererList extends Component {
                     openDialogForDelete={this.openDialogForDelete}
                     openDialogForUpdate={this.openDialogForUpdate}
                     openAddDialog={this.openAddDialog} />
-
                 <DeleteDialog
                     deleteDeliverer={this.deleteDeliverer}
                     closeDeleteDialog={this.closeDeleteDialog}
                     showDeleteDialog={this.state.showDeleteDialog} />
-
                 <InsertDialog
                     showAddDialog={this.state.showAddDialog}
                     closeAddDialog={this.closeAddDialog}
                     insertDeliverer={this.insertDeliverer} />
-
                 <UpdateDialog
                     closeUpdateDialog={this.closeUpdateDialog}
                     updateDeliverer={this.updateDeliverer}

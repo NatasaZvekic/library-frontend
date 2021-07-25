@@ -2,12 +2,15 @@ import axios from 'axios'
 const LoginService = {
 
     getAllGenres: () => {
-        return axios.get("http://localhost:44324/genres", { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
+        return axios.get("http://localhost:44324/genres", {
+            headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` }
+        })
     },
 
     deleteGenre: (genreID) => {
-        console.log("in service " + genreID)
-        return axios.delete(`http://localhost:44324/genres/${genreID}`, { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
+        return axios.delete(`http://localhost:44324/genres/${genreID}`, {
+            headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` }
+        })
     },
 
     updateGenre: (genreName, genreID) => {
@@ -19,7 +22,8 @@ const LoginService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`http://localhost:44324/genres/${genreID}`, genre , {
+        return axios.put(`http://localhost:44324/genres/${genreID}`,
+            genre, {
             headers: header
         })
 
@@ -33,7 +37,8 @@ const LoginService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("http://localhost:44324/genres", genre , {
+        return axios.post("http://localhost:44324/genres",
+            genre, {
             headers: header
         })
 

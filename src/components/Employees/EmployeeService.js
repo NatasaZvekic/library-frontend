@@ -1,63 +1,60 @@
 import axios from 'axios'
 
-const EmployeeService ={
+const EmployeeService = {
 
-    getAllEmployees: () =>{
+    getAllEmployees: () => {
         return axios.get("http://localhost:44324/employees",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
-    
-    deleteEmployee: (id) =>{
+
+    deleteEmployee: (id) => {
         return axios.delete(`http://localhost:44324/employees/${id}`,
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
-    updateEmployee: (id, name, lastname, role, email, ssn, contact) => { console.log("role " + role + " " + lastname + " " )
+    updateEmployee: (id, name, lastname, role, email, ssn, contact) => {
         const newEmployee = {
-            employeeName : name,
-            employeeLastName : lastname,
-            employeeContact : contact,
-            ssn : ssn,
-            email : email,
-            role : role
+            employeeName: name,
+            employeeLastName: lastname,
+            employeeContact: contact,
+            ssn: ssn,
+            email: email,
+            role: role
         }
         const header = {
             "Content-Type": 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`http://localhost:44324/employees/${id}`, newEmployee , {
-                headers: header
-            }).then(response => console.log("resp " + response.data))
+        return axios.put(`http://localhost:44324/employees/${id}`, newEmployee, {
+            headers: header
+        }).then(response => { })
             .catch(error => {
-                
-                console.error('There was an error!', error);
             });
-            
+
     },
-    insertEmployee: ( name, lastname, role, email, password, contact, ssn) => { console.log("password " + password + " name: " + name + " last " + lastname + " role:" + role + " email" + email + " ssn: " + ssn + " contect:" + contact)
+    insertEmployee: (name, lastname, role, email, password, contact, ssn) => {
+        console.log("password " + password + " name: " + name + " last " + lastname + " role:" + role + " email" + email + " ssn: " + ssn + " contect:" + contact)
         const newEmployee = {
-            employeeName : name,
-            employeeLastName : lastname,
-            employeeContact : Number(contact),
-            ssn : Number(ssn),
-            email : email,
+            employeeName: name,
+            employeeLastName: lastname,
+            employeeContact: Number(contact),
+            ssn: Number(ssn),
+            email: email,
             password: password,
-            role : role
+            role: role
         }
         const header = {
             "Content-Type": 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("http://localhost:44324/employees", newEmployee , {
-                headers: header
-            }).then(response => console.log("resp " + response.data))
+        return axios.post("http://localhost:44324/employees", newEmployee, {
+            headers: header
+        }).then(response => { })
             .catch(error => {
-                
-                console.error('There was an error!', error);
             });
-            
+
     },
 }
 export default EmployeeService

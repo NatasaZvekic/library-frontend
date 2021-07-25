@@ -7,7 +7,10 @@ import NewHead from '../Header/HeaderTwo';
 import AuthorService from '../Authors/AuthorService'
 import GenreService from '../Genres/GenreService'
 import SupplierService from '../Suppliers/SupplierService'
-import { IoIosPlayCircle } from 'react-icons/io';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
 
 function BooksContainer() {
     const history = useHistory();
@@ -26,7 +29,6 @@ function BooksContainer() {
     useEffect(() => {
         BooksService.GetAllBooks(pageNum, bookName).then((data) => {
             setBooks(data.data.booksList);
-            console.log("image" + data.data.booksList.url)
             setNumberOfPages(data.data.numberOfPages);
         })
         AuthorService.getAllAuthors().then((data) => {
@@ -39,23 +41,22 @@ function BooksContainer() {
             setSuppliers(data.data)
         })
     })
+    
+    const DeleteBook = async (id) => {
+        await   BooksService.DeleteBook(id)
+        .then((data) => {
 
-    const Add = () => {
-        //  BooksService.AddNewBook()
-    }
-
-    const DeleteBook = (id) => {
-        console.log("ima + " + id)
-        BooksService.DeleteBook(id)
+        })
+        .catch(function (error) {
+            toast.error("Recond can not be deleted!", { position: toast.POSITION.TOP_CENTER })
+        })
     }
 
     const InsertRental = (bookID) => {
-        console.log("in coni")
         BooksService.InsertRental(bookID)
     }
 
     const InsertBook = (bookName, supplierID, available, genreID, authorID, publishYear, url, price) => {
-        console.log("price in c " + price)
         BooksService.InsertBook(bookName, supplierID, available, genreID, authorID, publishYear, url, price)
     }
 

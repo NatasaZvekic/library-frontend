@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import NewHead from '../Header/HeaderTwo'
 import Pasus from './Pasus'
-import background from '../assets/photo/unnamed.jpg'
 
 export default class AboutUs extends Component {
     render() {

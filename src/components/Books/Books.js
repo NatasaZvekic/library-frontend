@@ -5,7 +5,6 @@ import CreateRental from './CreateRental'
 import InsertDialog from './InsertDialog'
 
 const Books = (props) => {
-
     let history = useHistory()
     const [bookName, setBookName] = useState('');
     const [showInsertRentalDialog, setDialogForInsertRental] = useState(false)
@@ -27,7 +26,6 @@ const Books = (props) => {
         setDialogForInsertBook(false)
     }
     const openDialogForInsertRental = () => {
-        console.log("noooo")
         setDialogForInsertRental(true)
     }
     const openDialogForInsertBook = () => {
@@ -52,12 +50,9 @@ const Books = (props) => {
                     placeholder="Enter book title you are looking for.."
                     onChange={onChange}
                 />
-                <svg onClick={submit} style={{marginLeft:'-30px', cursor: 'pointer'}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <svg onClick={submit} style={{ marginLeft: '-30px', cursor: 'pointer' }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
-
-                {/* <button className="searchButton" onClick={submit}>Search</button> */}
-
                 {localStorage.getItem("role") === "admin" ?
                     <button onClick={openDialogForInsertBook} className="createRental"> Add book
                         <svg style={{ marginLeft: '6px', marginBottom: '4px' }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
@@ -72,7 +67,6 @@ const Books = (props) => {
                         </svg>
                     </button> : ''}
             </div>
-
             <BookList style={{ backgroundColor: '#f2e6ff' }}
                 listOfBooks={props.listOfBooks}
                 DeleteBook={props.DeleteBook}
@@ -81,28 +75,22 @@ const Books = (props) => {
                 suppliersList={props.suppliersList}
                 updateBook={props.updateBook}
                 add={props.add}
-                InsertRental={InsertRental}
-
-            >
+                InsertRental={InsertRental}>
             </BookList>
-
             <CreateRental
                 openDialogForInsertRental={showInsertRentalDialog}
                 closeInsertRentalDialog={closeInsertRentalDialog}
                 listOfBooks={props.listOfBooks}
-                InsertRental={InsertRental}
-            >
+                InsertRental={InsertRental}   >
             </CreateRental>
-
             <InsertDialog
                 showInsertBookDialog={showInsertBookDialog}
                 insertBook={insertBook}
                 genresList={props.genresList}
                 suppliersList={props.suppliersList}
                 authorsList={props.authorsList}
-                closeInsertDialog={closeInsertDialog}
-            ></InsertDialog>
-
+                closeInsertDialog={closeInsertDialog} >
+            </InsertDialog>
         </body>
     )
 }

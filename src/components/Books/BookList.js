@@ -11,7 +11,7 @@ export default class BookList extends Component {
             showDeleteDialog: false,
             showUpdateDialog: false,
             showAddDialog: false,
-            showInsertRentalDialog : false,
+            showInsertRentalDialog: false,
             id: 0,
             bookName: '',
             available: '',
@@ -20,7 +20,7 @@ export default class BookList extends Component {
             authorID: '',
             aa: '',
             bookID: '',
-            price : ''
+            price: ''
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
         this.closeUpdateDialog = this.closeUpdateDialog.bind(this)
@@ -28,17 +28,14 @@ export default class BookList extends Component {
         this.DeleteBook = this.DeleteBook.bind(this)
         this.updateBook = this.updateBook.bind(this)
         this.InsertRental = this.InsertRental.bind(this)
-        // this.openDialogForDelete = this.openDialogForDelete.bind(this)
     }
 
     openDialogForDelete = (id) => {
-        console.log("sdsdf")
         this.setState({ id: id })
         this.setState({ showDeleteDialog: true })
     }
 
     openDialogForUpdate = (book) => {
-        console.log("name  a " + book.url)
         this.setState({ showUpdateDialog: true })
         this.setState({ id: book.bookID })
         this.setState({ url: book.url })
@@ -48,35 +45,41 @@ export default class BookList extends Component {
         this.setState({ authorName: book.authorName })
         this.setState({ bookID: book.bookID })
         this.setState({ authorID: book.authorID })
-        this.setState({price : book.price})
+        this.setState({ price: book.price })
     }
+
     closeUpdateDialog() {
         this.setState({ showUpdateDialog: false })
         this.setState({ name: '' })
         this.setState({ lastname: '' })
         this.setState({ yearOfBirth: '' })
-        this.setState({price : ''})
+        this.setState({ price: '' })
     }
+
     closeDeleteDialog() {
         this.setState({ showDeleteDialog: false })
     }
+
     DeleteBook() {
         this.props.DeleteBook(this.state.id)
         this.setState({ showDeleteDialog: false })
     }
+
     updateBook(bookName, available, publishYear, url, price) {
         this.props.updateBook(this.state.id, bookName, available, publishYear, url, price)
         this.closeUpdateDialog()
     }
+
     InsertRental(id) {
         this.props.InsertRental(this.state.id)
         this.closeInsertRentalDialog()
     }
+
     closeInsertRentalDialog() {
         this.setState({ showInsertRentalDialog: false })
     }
+
     openDialogForInsertRental = (book) => {
-        console.log("noooo")
         this.setState({ id: book.bookID })
         this.setState({ url: book.url })
         this.setState({ bookName: book.bookName })
@@ -84,20 +87,19 @@ export default class BookList extends Component {
         this.setState({ publishYear: book.publishYear })
         this.setState({ authorName: book.authorName })
         this.setState({ bookID: book.bookID })
-        this.setState({ price : book.price })
+        this.setState({ price: book.price })
         this.setState({ authorID: book.authorID })
         this.setState({ showInsertRentalDialog: true })
-
     }
+
     setAuthor = (author, key) => {
-        console.log("author " + author)
         this.setState({ aa: author })
     }
+
     render() {
         return (
             <div>
                 <div className="list" style={{ backgroundColor: '#f2e6ff' }}>
-
                     <Book
                         listOfBooks={this.props.listOfBooks}
                         openDialogForUpdate={this.openDialogForUpdate}
@@ -110,7 +112,6 @@ export default class BookList extends Component {
                         showDeleteDialog={this.state.showDeleteDialog}
                         DeleteBook={this.DeleteBook}
                     />
-
                     <CreateRental
                         openDialogForInsertRental={this.state.showInsertRentalDialog}
                         closeInsertRentalDialog={this.closeInsertRentalDialog}
@@ -125,8 +126,7 @@ export default class BookList extends Component {
                         suppliersList={this.props.suppliersList}
                         authorName={this.state.authorName}
                         updateBook={this.updateBook}
-                        url={this.state.url}
-                    >
+                        url={this.state.url} >
                     </CreateRental>
                     <UpdateDialog
                         authorsList={this.props.authorsList}
@@ -141,11 +141,9 @@ export default class BookList extends Component {
                         authorName={this.state.authorName}
                         updateBook={this.updateBook}
                         price={this.state.price}
-                        url={this.state.url}
-                    ></UpdateDialog>
-
+                        url={this.state.url} >
+                    </UpdateDialog>
                 </div>
-
             </div>
         )
     }

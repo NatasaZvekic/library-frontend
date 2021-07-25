@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react'
 import NewHead from '../Header/HeaderTwo'
 import SupplierService from './SupplierService';
 import SupplierList from './SupplierList'
-import background from '../assets/photo/unnamed.jpg'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
 
 function SupplierContainer() {
     const [suppliers, setSuppliers] = useState([]);
@@ -21,18 +24,24 @@ function SupplierContainer() {
         SupplierService.updateSupplier(id, name, contact, address)
     }
 
-    const deleteSupplier = (id) => {
-        SupplierService.deleteSupplier(id)
+    const deleteSupplier = async (id) => {
+        await SupplierService.deleteSupplier(id)
+            .then((data) => {
+
+            })
+            .catch(function (error) {
+                toast.error("Recond can not be deleted!", { position: toast.POSITION.TOP_CENTER })
+            })
     }
 
     return (
         <div className="login" style={{ backgroundColor: '#f2e6ff' }}>
             <NewHead />
             <SupplierList supplierList={suppliers}
-                insertSupplier={insertSupplier} 
+                insertSupplier={insertSupplier}
                 updateSupplier={updateSupplier}
                 deleteSupplier={deleteSupplier}
-                />
+            />
         </div>
     )
 }

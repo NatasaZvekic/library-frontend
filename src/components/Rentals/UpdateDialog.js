@@ -27,12 +27,10 @@ const UpdateDialog = (props) => {
                             class="form-control"
                             onChange={(event) => changeEmployee(event.target.value)}
                             value={employee}
-
                         >
                             {props.employeeList.map((employee) => {
                                 return (
                                     <option value={employee.employeeID}>{employee.employeeName} {employee.employeeLastName}</option>
-
                                 )
                             })}
 

@@ -59,7 +59,7 @@ export default class AuthorList extends Component {
     }
     openAddDialog() { this.setState({ showAddDialog: true }) }
 
-    updateAuthor = (name, lastname, yearOfBirth) => { console.log(" af " + name + " " + lastname + " " + yearOfBirth)
+    updateAuthor = (name, lastname, yearOfBirth) => {
         this.props.updateAuthor(this.state.id, name, lastname, yearOfBirth)
         this.closeUpdateDialog()
     }

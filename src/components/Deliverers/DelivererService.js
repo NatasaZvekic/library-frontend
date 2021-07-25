@@ -1,6 +1,6 @@
 import axios from 'axios'
-const DelivererService = {
 
+const DelivererService = {
     getAllDeliverers: () => {
         return axios.get("http://localhost:44324/deliverers",
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
@@ -11,9 +11,9 @@ const DelivererService = {
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
-    updateDeliverer: (id, companyName, address, contact) => { 
+    updateDeliverer: (id, companyName, address, contact) => {
         const newDeliverer = {
-            deliveryCompanyName : companyName,
+            deliveryCompanyName: companyName,
             deliveryAddress: address,
             deliveryContant: contact
         }
@@ -22,16 +22,16 @@ const DelivererService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.put(`http://localhost:44324/deliverers/${id}`, newDeliverer , {
-                headers: header
-            }).then(response => console.log("resp " + response.data))
+        return axios.put(`http://localhost:44324/deliverers/${id}`,
+            newDeliverer, {
+            headers: header
+        }).then(response => { })
             .catch(error => {
-                
-                console.error('There was an error!', error);
+
             });
-            
+
     },
-    insertDeliverer: ( companyName, address, contact) => {  console.log("in service " + companyName + " " + address + " " + contact)
+    insertDeliverer: (companyName, address, contact) => {
         const newDeliverer = {
             deliveryCompanyName: companyName,
             deliveryContant: Number(contact),
@@ -42,14 +42,16 @@ const DelivererService = {
             "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
         }
-        return axios.post("http://localhost:44324/deliverers", newDeliverer , {
-                headers: header
-            }).then(response => console.log("resp " + response.data))
+        return axios.post("http://localhost:44324/deliverers", newDeliverer, {
+            headers: header
+        })
+            .then(response => {
+
+            })
             .catch(error => {
-                
-                console.error('There was an error!', error);
+
             });
-            
+
     },
 }
 export default DelivererService

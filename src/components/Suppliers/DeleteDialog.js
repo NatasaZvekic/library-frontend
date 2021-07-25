@@ -13,10 +13,10 @@ export default class DeleteDialog extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     Are you sure you want to delete this record?
-                    </Modal.Body>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeDeleteDialog}> Close</Button>
-                    <Button onClick={this.props.deleteSupplier}   variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Delete</Button>
+                    <Button onClick={this.props.deleteSupplier} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Delete</Button>
                 </Modal.Footer>
             </Modal>
         )

@@ -395,24 +395,26 @@ h2{
   padding: 2px;
   font-size: 21px;
   cursor: pointer;
-  height: 30px;
+  height: 28px;
   text-decoration: none;
 }
 
 .page-item:hover{
  background: #ccc;
  height: 100%;
-}searchBox
+}
 
 .page-item-active{
   display: inline-block;  
+  border: 1px solid #ececec;
+  background-color:#ccc;
   margin: 2px;
-  height: 30px;
+  padding: 2px;
   font-size: 21px;
   cursor: pointer;
-  color:black;
-  background: white;
+  height: 100%;
   text-decoration: none;
+  padding-bottom: 5px;
 }
 .modalDialog{
   width:200px;

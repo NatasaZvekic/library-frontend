@@ -13,11 +13,11 @@ const UserService = {
 
     updateUser: (id, name, lastname, contact, address, email, role) => {
         const newUser = {
-            userName: name,
+            name: name,
             userLastName: lastname,
             userContact: contact,
             userAddress: address,
-            email: email,
+            userName: email,
             role: role
         }
         const header = {
@@ -32,12 +32,12 @@ const UserService = {
     },
     insertUser: (name, lastname, contact, address, email, role, password) => {
         const newUser = {
-            userName: name,
+            name: name,
             userLastName: lastname,
             userContact: Number(contact),
             userAddress: address,
             password: password,
-            email: email,
+            userName: email,
             role: role
         }
         const header = {

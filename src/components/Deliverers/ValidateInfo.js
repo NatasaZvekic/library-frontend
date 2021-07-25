@@ -11,7 +11,5 @@ export default function ValidateInfo(values){
         errors.address = "Address required!"
     }
 
-
-
 return errors
 }

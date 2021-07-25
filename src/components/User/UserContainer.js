@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import UserService from './UserService'
 import NewHead from '../Header/HeaderTwo'
 import UserList from './UserList';
-import background from '../assets/photo/unnamed.jpg'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
 
 function UserContainer() {
     const [users, setUsers] = useState([]);
@@ -13,17 +16,29 @@ function UserContainer() {
         })
     })
 
-    const insertUser = (name, lastname, contact, address, email, role, password) => {
-        console.log("a " + address)
-        UserService.insertUser(name, lastname, contact, address, email, role, password)
+    const insertUser = async (name, lastname, contact, address, email, role, password) => {
+        await UserService.insertUser(name, lastname, contact, address, email, role, password)
+        .then((data ) => {
+
+        })
+        .catch(function (error) {
+            toast.error("Username alredy exist!", { position: toast.POSITION.TOP_CENTER })
+        })
     }
 
     const updateUser = (id, name, lastname, contact, address, email, role) => {
         UserService.updateUser(id, name, lastname, contact, address, email, role)
     }
 
-    const deleteUser = (id) => {
-        UserService.deleteUser(id)
+    
+    const deleteUser = async (id) => {
+        await  UserService.deleteUser(id)
+        .then((data) => {
+
+        })
+        .catch(function (error) {
+            toast.error("Recond can not be deleted!", { position: toast.POSITION.TOP_CENTER })
+        })
     }
 
     return (
@@ -40,3 +55,4 @@ function UserContainer() {
 }
 
 export default UserContainer;
+

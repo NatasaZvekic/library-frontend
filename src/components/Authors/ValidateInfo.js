@@ -11,7 +11,5 @@ export default function ValidateInfo(values){
         errors.yearOfBirth = "Year of birth required!"
     }
 
-
-
 return errors
 }

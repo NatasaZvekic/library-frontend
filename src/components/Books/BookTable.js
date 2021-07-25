@@ -1,15 +1,5 @@
 import React, { Component } from 'react'
 export default class Book extends Component {
-
-    deleteBook(id) {
-        console.log("De;ete " + id)
-        // this.props.deleteBook(id)
-    }
-
-    createRental(bookID) {
-        console.log("booksID " + bookID)
-    }
-
     render() {
         return (
             this.props.listOfBooks.map(book => {
@@ -48,9 +38,6 @@ export default class Book extends Component {
                             {localStorage.getItem("role") === "user" ?
                                 <button onClick={() => this.props.openDialogForInsertRental(book)} class="btn btn-primary">Add book to card</button>
                                 : ''}
-                        </tr>
-                        <tr>
-
                         </tr>
                     </table>
 

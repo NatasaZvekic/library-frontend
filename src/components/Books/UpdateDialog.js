@@ -21,7 +21,7 @@ export default class UpdateDialog extends Component {
             genreID: '',
             url: '',
             supplierID: '',
-            price : 0
+            price: 0
         };
 
     }
@@ -42,7 +42,7 @@ export default class UpdateDialog extends Component {
     }
 
     onChange(e) {
-        if (e.target.name == "available" || e.target.name == "publishYear" || e.target.name=="price") {
+        if (e.target.name == "available" || e.target.name == "publishYear" || e.target.name == "price") {
             this.setState({ [e.target.name]: +e.target.value })
         } else {
             this.setState({ [e.target.name]: e.target.value })

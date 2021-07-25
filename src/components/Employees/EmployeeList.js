@@ -27,10 +27,12 @@ export default class EmployeeList extends Component {
         this.closeAddDialog = this.closeAddDialog.bind(this)
         this.openAddDialog = this.openAddDialog.bind(this)
     }
+
     openDialogForDelete = (id) => {
         this.setState({ showDeleteDialog: true })
         this.setState({ id: id })
     }
+
     openDialogForUpdate = (employeeForUpdate) => {
         this.setState({ showUpdateDialog: true })
         this.setState({ id: employeeForUpdate.employeeID })
@@ -42,6 +44,7 @@ export default class EmployeeList extends Component {
         this.setState({ contact: employeeForUpdate.employeeContact })
         this.setState({ password: employeeForUpdate.password })
     }
+
     openAddDialog() {
         this.setState({ showAddDialog: true })
     }
@@ -100,17 +103,14 @@ export default class EmployeeList extends Component {
                     openDialogForDelete={this.openDialogForDelete}
                     openDialogForUpdate={this.openDialogForUpdate}
                     employeesList={this.props.employeesList} />
-
                 <DeleteDialog
                     deleteEmployee={this.deleteEmployee}
                     closeDeleteDialog={this.closeDeleteDialog}
                     showDeleteDialog={this.state.showDeleteDialog} />
-
                 <InsertDialog
                     insertEmployee={this.insertEmployee}
                     showAddDialog={this.state.showAddDialog}
                     closeAddDialog={this.closeAddDialog} />
-
                 <UpdateDialog
                     updateEmployee={this.updateEmployee}
                     name={this.state.name}

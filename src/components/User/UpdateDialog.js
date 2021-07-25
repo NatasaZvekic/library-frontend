@@ -13,7 +13,7 @@ export default class UpdateDialog extends Component {
             contact: 0,
             address: '',
             role: '',
-            email: '',
+            userName: '',
         };
     }
     onChange(e) {
@@ -77,10 +77,10 @@ export default class UpdateDialog extends Component {
                     <div class="form-group">
                         <input
                             type="text"
-                            name="email"
+                            name="userName"
                             class="form-control"
-                            placeholder="User email"
-                            defaultValue={this.props.email}
+                            placeholder="UserName"
+                            defaultValue={this.props.userName}
                             onChange={this.onChange.bind(this)}
                         />
                     </div>
@@ -94,7 +94,6 @@ export default class UpdateDialog extends Component {
                             onChange={this.onChange.bind(this)}
                         />
                     </div>
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeUpdateDialog}> Close </Button>
@@ -103,7 +102,7 @@ export default class UpdateDialog extends Component {
                         this.state.lastname == "" ? this.props.lastname : this.state.lastname,
                         this.state.contact == 0 ? this.props.contact : this.state.contact,
                         this.state.address == "" ? this.props.address : this.state.address,
-                        this.state.email == "" ? this.props.email : this.state.email,
+                        this.state.userName == "" ? this.props.userName : this.state.userName,
                         this.state.role == "" ? this.props.role : this.state.role,
                     )} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Update</Button>
                 </Modal.Footer>

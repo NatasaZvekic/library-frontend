@@ -23,13 +23,10 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/home" exact component={Home} />
         <Route path="/galery" exact component={Galery} />
-        <Route path="/register" exact component={RegisterContainer} />
+        <Route path="/register"  exact component={localStorage.getItem("jwtToken") === null ? RegisterContainer : Home }/>
         <Route path="/myrentals" exact component= {localStorage.getItem("role") === "user" ? MyRentalsContainer : Home }/>
-
         <Route path="/about" exact component={AboutUs} />
-        {/* {localStorage.getItem("jwtToken") === null ? : <Redirect to="/home"/> } */}
         <Route path="/login" exact component={localStorage.getItem("jwtToken") === null ? LoginContainer : Home}/>
-          {/* {localStorage.getItem("jwtToken") === null ? <Route path="/login" exact component={LoginContainer} />: <Redirect to="/home"/> }  */}
          <Route path="/logout" exact component={localStorage.getItem("jwtToken") !== null ? Logout : Home } />
         <Route path="/books" exact component= {BooksContainer}/> 
         <Route path="/authors" exact component= {localStorage.getItem("role") === "admin" ? AuthorContainer : Home }/>

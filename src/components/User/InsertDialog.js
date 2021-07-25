@@ -11,7 +11,7 @@ const InsertDialog = (props) => {
         contact: '',
         address: '',
         role: '',
-        email: '',
+        userName: '',
         password: ''
     })
 
@@ -25,16 +25,16 @@ const InsertDialog = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (values.name === "" || values.lastname === "" || values.contact === "" || values.email === "" ||
+        if (values.name === "" || values.lastname === "" || values.contact === "" || values.userName === "" ||
             values.address === "" || values.role === "" || values.password === "" ||
-            values.name === undefined || values.contact === undefined || values.email === undefined ||
+            values.name === undefined || values.contact === undefined || values.userName === undefined ||
             values.address === undefined || values.role === undefined || values.password === undefined ||
             values.lastname === undefined) {
             setErrors(validate(values))
         }
         else {
             props.insertUser(values.name, values.lastname, values.contact, values.address,
-                values.email, values.role, values.password)
+                values.userName, values.role, values.password)
             setErrors("")
             setValues({ values: '' })
         }
@@ -102,10 +102,10 @@ const InsertDialog = (props) => {
                 <div class="form-group">
                     <input
                         type="text"
-                        name="email"
+                        name="userName"
                         class="form-control"
-                        placeholder="User email"
-                        defaultValue={values.email}
+                        placeholder="UserName"
+                        defaultValue={values.userName}
                         onChange={handleChange}
                     />
                     {<p>{errors.email}</p>}

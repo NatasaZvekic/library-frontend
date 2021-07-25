@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import NewHead from "../Header/HeaderTwo";
 import AuthorList from "./AuthorList";
 import AuthorService from "./AuthorService";
-import background from '../assets/photo/unnamed.jpg'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
 
 function AuthorContainer() {
     const [authors, setAuthors] = useState([]);
@@ -12,9 +15,15 @@ function AuthorContainer() {
             setAuthors(data.data);
         })
     })
+    
+    const deleteAuthor = async (id) => {
+        await AuthorService.deleteAuthor(id)
+            .then((data) => {
 
-    const deleteAuthor = (id) => {
-        AuthorService.deleteAuthor(id)
+            })
+            .catch(function (error) {
+                toast.error("Recond can not be deleted!", { position: toast.POSITION.TOP_CENTER })
+            })
     }
 
     const updateAuthor = (id, name, lastname, year) => {
@@ -26,7 +35,7 @@ function AuthorContainer() {
         AuthorService.insertAuthor(name, lastname, year)
     }
     return (
-        <div className="login" style={{ backgroundColor: '#f2e6ff' , height: '100%'}}>
+        <div className="login" style={{ backgroundColor: '#f2e6ff', height: '100%' }}>
             <NewHead />
             <AuthorList
                 authorsList={authors}
