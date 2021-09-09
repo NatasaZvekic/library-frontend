@@ -13,9 +13,10 @@ import EmployeeContainer from './components/Employees/EmployeeContainer';
 import SupplierContainer from './components/Suppliers/SupplierContainer';
 import UserContainer from './components/User/UserContainer';
 import RentalContainer from './components/Rentals/RentalContainer';
-import RegisterContainer from './components/Register/RegisterContainer';
+import RegisterContainer from './components/Register/RegisterContainer';  
 import MyRentalsContainer from './components/MyRentals/MyRentalsContainer';
-
+import MyProfileContainer from './components/MyProfile/MyProfileContainer';
+import MyCards   from './components/Books/MyCards';
 function App() {
   return ( 
     <Router>
@@ -37,6 +38,9 @@ function App() {
         <Route path="/employees" exact component={localStorage.getItem("role") === "admin" ? EmployeeContainer : Home } />
         <Route path="/users" exact component={localStorage.getItem("role") === "admin" ? UserContainer : Home } />
         <Route path="/suppliers" exact component={localStorage.getItem("role") === "admin" ? SupplierContainer : Home } />
+        <Route path="/myProfile" exact component={MyProfileContainer} />
+        <Route path="/trz" exact component={MyCards} />
+
       </Switch>
     </Router>
   );

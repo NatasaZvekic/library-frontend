@@ -17,7 +17,10 @@ export default class RentalList extends Component {
             showCompleted: 'none',
             showUnCompleted: 'block',
             bookID: '',
-            userID :''
+            userID: '',
+            white: 'black',
+            black: '#f0ad4e',
+            date: new Date()
         };
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this)
         this.deleteRental = this.deleteRental.bind(this)
@@ -30,13 +33,15 @@ export default class RentalList extends Component {
         this.setState({ showDeleteDialog: true })
         this.setState({ id: id })
     }
-    openDialogForUpdate = (rental) => {
+    openDialogForUpdate = (rental) => { console.log("rental  " , rental)
         this.setState({ employee: rental.employeeID })
         this.setState({ deliverer: rental.deliverID })
         this.setState({ id: rental.rentalID })
         this.setState({ bookID: rental.bookID })
         this.setState({ userID: rental.userID })
+        this.setState({ date : rental.rentalDate})
         this.setState({ showUpdateDialog: true })
+        console.log("date", this.state.date)
     }
     openAddDialog() {
         this.setState({ showAddDialog: true })
@@ -59,22 +64,35 @@ export default class RentalList extends Component {
     showCompleted = () => {
         this.setState({ showCompleted: 'block' })
         this.setState({ showUnCompleted: 'none' })
+        this.setState({ black: 'black' })
+        this.setState({ white: '#f0ad4e' })
+
     }
     showUnCompleted = () => {
         this.setState({ showCompleted: 'none' })
         this.setState({ showUnCompleted: 'block' })
+        this.setState({ black: '#f0ad4e' })
+        this.setState({ white: 'black' })
     }
     updateRental = (employeeID, deliveryID) => {
-        this.props.updateRental(this.state.id, employeeID, deliveryID, this.state.bookID, this.state.userID)
-        this.setState({showUpdateDialog : false})
+        this.props.updateRental(this.state.id, employeeID, deliveryID, this.state.bookID, this.state.userID, this.state.date)
+        this.setState({ showUpdateDialog: false })
     }
 
     render() {
         return (
             <div>
                 <div className="buttonsList">
-                    <button onClick={this.showUnCompleted.bind(this)} className="btnUncompletedRentals">Uncompleted orders</button>
-                    <button onClick={this.showCompleted.bind(this)} className="btnUncompletedRentals">Completed orders</button>
+                    <button
+                        onClick={this.showUnCompleted.bind(this)}
+                        style={{ color: this.state.black}}
+                        className="btnUncompletedRentals">Uncompleted orders
+                    </button>
+                    <button
+                        onClick={this.showCompleted.bind(this)}
+                        style={{ color: this.state.white}}
+                        className="btnUncompletedRentals">Completed orders
+                    </button>
                 </div>
                 <RentalTable
                     showCompleted={this.state.showCompleted}
@@ -84,6 +102,7 @@ export default class RentalList extends Component {
                     completedRentals={this.props.completedRentals} />
                 <UncompletedRentalsTable
                     showCompleted={this.state.showUnCompleted}
+                    showUnCompletedColor={this.state.showUnCompletedColor}
                     openDialogForDelete={this.openDialogForDelete}
                     openDialogForUpdate={this.openDialogForUpdate}
                     openAddDialog={this.openAddDialog}

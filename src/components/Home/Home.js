@@ -27,7 +27,7 @@ const Home = () => {
 
                 height: '500px'
             }}>
-                <p className="mainTitle">PUBLIC LIBRARY</p>
+                <p className="mainTitle">PUBLIC BOOKS STORE</p>
                 <Header style={{marginTop: '30px'}} />
          
                 {/* {transation((style, item) =>

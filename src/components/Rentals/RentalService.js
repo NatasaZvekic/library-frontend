@@ -21,12 +21,15 @@ const RentalService = {
             { headers: { "Authorization": `Bearer ${localStorage.getItem("jwtToken")}` } })
     },
 
-    updateRental: (rentalID, deliveryID, employeeID, bookID, userID) => {
+    updateRental: (rentalID, deliveryID, employeeID, bookID, userID, date) => {
+        console.log("date", date)
         const rental = {
             bookID: bookID,
             userID: userID,
             employeeID: "867D7C45-9E41-4CDB-8853-F6403E1844C8",
-            deliveryID: "E69F696D-A5EB-4502-85CB-52B1AC548DE5"
+            deliveryID: "E69F696D-A5EB-4502-85CB-52B1AC548DE5",
+            rentalDate : date
+        
         }
         const header = {
             "Content-Type": 'application/json',

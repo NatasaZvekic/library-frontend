@@ -15,6 +15,7 @@ function RentalContainer() {
     useEffect(() => {
         RentalService.getAllCompletedRentals().then((data) => {
             setCompletedRentals(data.data);
+            console.log("completed " + completedRentals)
         })
         RentalService.getAllUncompletedRentals().then((data) => {
             setUncompletedRentals(data.data);

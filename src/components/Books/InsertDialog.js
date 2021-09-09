@@ -145,6 +145,7 @@ export default class InsertDialog extends Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.closeInsertDialog}> Close </Button>
+            
                     <Button onClick={() =>
                         this.props.insertBook(
                             this.state.bookName,

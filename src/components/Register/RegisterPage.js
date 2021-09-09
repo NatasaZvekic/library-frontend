@@ -111,7 +111,7 @@ const RegisterPage = (props) => {
                                         type="number"
                                         name="contact"
                                         class="form-control"
-                                        placeholder="User contact"
+                                        placeholder="Contact"
                                         defaultValue={values.contact}
                                         onChange={handleChange}
                                     />
@@ -122,7 +122,7 @@ const RegisterPage = (props) => {
                                         type="text"
                                         name="address"
                                         class="form-control"
-                                        placeholder="User address"
+                                        placeholder="Address"
                                         defaultValue={values.address}
                                         onChange={handleChange}
                                     />
@@ -141,7 +141,7 @@ const RegisterPage = (props) => {
                                     type="password"
                                     name="password"
                                     class="form-control"
-                                    placeholder="User password"
+                                    placeholder="Password"
                                     defaultValue={values.password}
                                     onChange={handleChange}
                                 />

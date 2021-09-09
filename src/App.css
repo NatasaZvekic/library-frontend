@@ -845,3 +845,46 @@ body#LoginForm{  background-repeat:no-repeat; background-position:center; backgr
   text-align: center;
   margin-top: 50px;
 }
+
+/* .root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+}
+
+.Appf {
+	width: 450px;
+	display: flex;
+	height: 70vh;
+	justify-content: space-around;
+	flex-direction: column;
+	background: #ffff;
+	border-radius: 10px;
+}
+
+form {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+input {
+	background: #f9f9f9;
+	padding: 10px;
+	width: 100%;
+	border: none;
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: rgb(0, 0, 0);
+	outline: none;
+	font-weight: 300;
+}
+
+.rccs__card--unknown > div {
+	background: #75c9a5;
+} */

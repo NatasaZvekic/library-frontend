@@ -40,7 +40,7 @@ const FormSignUp = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (values.password === "" || values.email === "" || !validator.isEmail(values.email)) {
+        if (values.password === "" || values.email === "") {
             console.log("erros")
             setErrors(validate(values))
 
@@ -62,25 +62,34 @@ const FormSignUp = (props) => {
                                 <p>Please enter your username and password</p>
                             </div>
                             <form id="Login">
-                                <div>
-                                </div>
                                 <div class="form-group">
-                                    <input type="email" name="email"
+                                    <input type="email"
+                                        name="email"
                                         value={values.email}
-                                        onChange={handleChange} class="form-control" id="inputEmail" placeholder="Username" />
+                                        onChange={handleChange}
+                                        class="form-control"
+                                        id="inputEmail"
+                                        placeholder="Username" />
                                     {<p>{errors.email}</p>}
 
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password"
+                                    <input type="password"
+                                        name="password"
                                         value={values.password}
-                                        onChange={handleChange} class="form-control" id="inputPassword" placeholder="Password" />
+                                        onChange={handleChange}
+                                        class="form-control"
+                                        id="inputPassword"
+                                        placeholder="Password" />
                                     {errors.password && <p>{errors.password}</p>}
                                 </div>
                                 <div class="forgot">
-                                    <Link to="register" className="registerBtn">Dont have an account? Register</Link>
+                                    <Link to="register"
+                                        className="registerBtn">Dont have an account? Register</Link>
                                 </div>
-                                <button type="submit" onClick={handleSubmit} class="btn btn-primary">Login</button>
+                                <button type="submit"
+                                    onClick={handleSubmit} class="btn btn-primary">Login</button>
+
                             </form>
                         </div>
                     </div>

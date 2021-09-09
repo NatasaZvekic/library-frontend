@@ -8,10 +8,6 @@ export default function ValidateInfo(values) {
     if (values.email.length == 0) {
         errors.email = "Email required!"
     }
-    if (!validator.isEmail(values.email)) { 
-        errors.email = "Email is not valid!"
-    }
-
 
     return errors
 }

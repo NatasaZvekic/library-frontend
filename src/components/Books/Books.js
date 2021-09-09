@@ -9,6 +9,7 @@ const Books = (props) => {
     const [bookName, setBookName] = useState('');
     const [showInsertRentalDialog, setDialogForInsertRental] = useState(false)
     const [showInsertBookDialog, setDialogForInsertBook] = useState(false)
+    const [showPaymentDialog, setPaymentDialog] = useState(false)
 
     const submit = () => {
         if (bookName != '') {
@@ -41,6 +42,12 @@ const Books = (props) => {
         closeInsertDialog()
         setDialogForInsertBook(false)
     }
+    const openDialogForPayment = () => {
+        setPaymentDialog(true)
+    }
+    const closeDialogForPayment = () => {
+        setPaymentDialog(false)
+    }
     return (
         <body style={{ backgroundColor: '#f2e6ff' }}>
             <div className="searchBox">
@@ -55,13 +62,6 @@ const Books = (props) => {
                 </svg>
                 {localStorage.getItem("role") === "admin" ?
                     <button onClick={openDialogForInsertBook} className="createRental"> Add book
-                        <svg style={{ marginLeft: '6px', marginBottom: '4px' }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z" />
-                        </svg>
-                    </button> : ''}
-
-                {localStorage.getItem("role") === "user" ?
-                    <button onClick={openDialogForInsertRental} className="createRental"> Create rental
                         <svg style={{ marginLeft: '6px', marginBottom: '4px' }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z" />
                         </svg>
@@ -87,6 +87,7 @@ const Books = (props) => {
                 showInsertBookDialog={showInsertBookDialog}
                 insertBook={insertBook}
                 genresList={props.genresList}
+                openPayment={openDialogForPayment}
                 suppliersList={props.suppliersList}
                 authorsList={props.authorsList}
                 closeInsertDialog={closeInsertDialog} >

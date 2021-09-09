@@ -51,6 +51,7 @@ const UpdateDialog = (props) => {
 
                         </select>
                     </div>
+                 
                 </form>
             </Modal.Body>
             <Modal.Footer>
@@ -58,6 +59,7 @@ const UpdateDialog = (props) => {
                 <Button onClick={() => props.updateRental(
                     employee == "" ? props.employee : employee,
                     deliverer == "" ? props.deliverer : deliverer,
+                    props.rentalDate
                 )} variant="secondary" style={{ backgroundColor: '#f0ad4e', borderColor: '#f0ad4e' }}>Complete</Button>
             </Modal.Footer>
         </Modal>

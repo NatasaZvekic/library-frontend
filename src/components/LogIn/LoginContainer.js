@@ -3,6 +3,10 @@ import LoginService from './LoginService'
 import FormSignUp from './FormSignUp';
 import background from '../assets/photo/unnamed.jpg'
 import NewHead from '../Header/HeaderTwo';
+import { toast } from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure()
 
 const LoginContainer = () => {
 
@@ -17,7 +21,8 @@ const LoginContainer = () => {
                 return data.status
             }).catch(function (error) {
                 localStorage.setItem("status", 400)
-                return "error"
+                console.log("invalide login")
+                toast.error("Username or password invalid, please try again.", { position: toast.POSITION.TOP_CENTER })
             })
     }
 
@@ -25,7 +30,7 @@ const LoginContainer = () => {
         <div className="login" style={{ backgroundImage: `url(${background})` }}>
             <NewHead />
             <FormSignUp login={Login} />
-
+            
         </div>
     )
 }
